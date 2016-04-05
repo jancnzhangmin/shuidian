@@ -1,0 +1,13 @@
+<% @huojiangzhenshus.each do |huojiangzhengshu| %>
+
+
+        <img src=<%= huojiangzhengshu.zhenshu %>>
+
+
+<% end %>
+
+<%= form_for(@zhengzhao, :html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
+
+    <%= f.file_field :zhenshu ,class:"form-control"%>
+    <button class="btn btn-w-m btn-success mylink" type="submit">确定</button>
+<% end %>

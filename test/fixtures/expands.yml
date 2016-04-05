@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expandtype_id: 1
+  yeji_id: 1
+  expand: MyString
+
+two:
+  expandtype_id: 1
+  yeji_id: 1
+  expand: MyString

@@ -1,0 +1,279 @@
+<script type="text/javascript" language="JavaScript">
+    function xiangmuleixingselect(){
+        document.getElementById("achievement_cla_id").value=document.getElementById("claid").value;
+    }
+    function get_sex(){
+        document.getElementById("hidden_sex").value=document.getElementById("select_sex").value;
+    }
+    function get_zhuangye(){
+        document.getElementById("hidden_zhuangye").value=document.getElementById("select_zhuangye").value;
+    }
+    function get_xueli(){
+        document.getElementById("hidden_xueli").value=document.getElementById("select_xueli").value;
+    }
+    function get_zhicheng(){
+        document.getElementById("hidden_zhicheng").value=document.getElementById("select_zhicheng").value;
+
+    }
+    function get_zcz(){
+        document.getElementById("hidden_zcz").value=document.getElementById("select_zcz").value;
+    }
+    function readURL(input,imgid) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.'+imgid)
+                        .attr('src', e.target.result)
+                //.width(300)
+                //.height(200);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+
+    }
+
+
+    $(document).ready(function () {
+
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+
+
+            $('#data_2 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+    });
+</script>
+
+<div class="ibox-content">
+  <%= form_for(@peo, :html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">姓名：</label>
+        <div class="col-sm-5">
+          <%= f.text_field :name ,class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">性别：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :sex ,value:"0", class:"form-control",id:"hidden_sex" %>
+          <select class="form-control m-b" id="select_sex" name="account" onchange="get_sex()">
+                <option value="0">男</option>
+            <option value="1">女</option>
+          </select>
+        </div>
+      </div>
+
+
+
+      <div class="form-group" id="data_1">
+        <label class="col-sm-3 control-label">生日:</label>
+        <div class="col-sm-5 input-group date">
+          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          <%= f.text_field :birthday, class:"form-control", value:"2014-11-11" %>
+        </div>
+      </div>
+
+      <div class="form-group" id="data_2">
+        <label class="col-sm-3 control-label">工作时间:</label>
+        <div class="col-sm-5 input-group date">
+          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          <%= f.text_field :worktime, class:"form-control", value:"2014-11-11" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">专业：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :zhuangye_id ,value:"1", class:"form-control",id:"hidden_zhuangye" %>
+          <select class="form-control m-b" id="select_zhuangye" name="account" onchange="get_zhuangye()">
+            <% @zhuangyes.each do |zhuangye| %>
+            <option value=<%= zhuangye.id %> ><%= zhuangye.zhuangye %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">学历：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :xueli_id ,value:"1", class:"form-control",id:"hidden_xueli" %>
+          <select class="form-control m-b" id="select_xueli" name="account" onchange="get_xueli()">
+            <% @xuelis.each do |xueli| %>
+                <option value=<%= xueli.id %> ><%= xueli.xueli %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">学校：</label>
+        <div class="col-sm-5">
+          <%= f.text_field :school ,class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">职称：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :zhicheng_id ,value:"1", class:"form-control",id:"hidden_zhicheng" %>
+          <select class="form-control m-b" id="select_zhicheng" name="account" onchange="get_zhicheng()">
+            <% @zhichengs.each do |zhicheng| %>
+                <option value=<%= zhicheng.id %> ><%= zhicheng.zhicheng %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">毕业学校：</label>
+        <div class="col-sm-2">
+          <%= f.file_field :schoolgra ,class:"form-control",onchange: "readURL(this,'img1')"%>
+        </div>
+        <div class="col-sm-5">
+          <%if !@peo.schoolgra %>
+              <img class="img1" width="200px" src=<%= @peo.schoolgra.url%> />
+          <% else %>
+              <img class="img1" src=<%=image_path('webuploader.png')%> />
+          <%end%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">学历证：</label>
+        <div class="col-sm-2">
+          <%= f.file_field :xuelicertification ,class:"form-control",onchange: "readURL(this,'img2')"%>
+        </div>
+        <div class="col-sm-5">
+          <%if !@peo.xuelicertification %>
+              <img class="img2" width="200px" src=<%= @peo.xuelicertification.url%> />
+          <% else %>
+              <img class="img2" src=<%=image_path('webuploader.png')%> />
+          <%end%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">职称证：</label>
+        <div class="col-sm-2">
+          <%= f.file_field :zhichencertification ,class:"form-control",onchange: "readURL(this,'img3')"%>
+        </div>
+        <div class="col-sm-5">
+          <%if !@peo.zhichencertification %>
+              <img class="img3" width="200px" src=<%= @peo.zhichencertification.url%> />
+          <% else %>
+              <img class="img3" src=<%=image_path('webuploader.png')%> />
+          <%end%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">职称证专业：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :zcz_id ,value:"1", class:"form-control",id:"hidden_zcz" %>
+          <select class="form-control m-b" id="select_zcz" name="account" onchange="get_zcz()">
+            <% @zczs.each do |zcz| %>
+                <option value=<%= zcz.id %> ><%= zcz.zcz %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">资格证：</label>
+        <div class="col-sm-2">
+          <%= f.file_field :zigecertification ,class:"form-control",onchange: "readURL(this,'img4')"%>
+        </div>
+        <div class="col-sm-5">
+          <%if !@peo.zigecertification %>
+              <img class="img4" width="200px" src=<%= @peo.zigecertification.url%> />
+          <% else %>
+              <img class="img4" src=<%=image_path('webuploader.png')%> />
+          <%end%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">身份证：</label>
+        <div class="col-sm-2">
+          <%= f.file_field :shenfencertification ,class:"form-control",onchange: "readURL(this,'img5')"%>
+        </div>
+        <div class="col-sm-5">
+          <%if !@peo.shenfencertification %>
+              <img class="img5" width="200px" src=<%= @peo.shenfencertification.url%> />
+          <% else %>
+              <img class="img5" src=<%=image_path('webuploader.png')%> />
+          <%end%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">安全证：</label>
+        <div class="col-sm-2">
+          <%= f.file_field :anquancertification ,class:"form-control",onchange: "readURL(this,'img6')"%>
+        </div>
+        <div class="col-sm-5">
+          <%if !@peo.anquancertification %>
+              <img class="img6" width="200px" src=<%= @peo.anquancertification.url%> />
+          <% else %>
+              <img class="img6" src=<%=image_path('webuploader.png')%> />
+          <%end%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">公证材料：</label>
+        <div class="col-sm-2">
+          <%= f.file_field :gongzhenmaterial ,class:"form-control",onchange: "readURL(this,'img7')"%>
+        </div>
+        <div class="col-sm-5">
+          <%if !@peo.gongzhenmaterial %>
+              <img class="img7" width="200px" src=<%= @peo.gongzhenmaterial.url%> />
+          <% else %>
+              <img class="img7" src=<%=image_path('webuploader.png')%> />
+          <%end%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">其它：</label>
+        <div class="col-sm-2">
+          <%= f.file_field :other ,class:"form-control",onchange: "readURL(this,'img8')"%>
+        </div>
+        <div class="col-sm-5">
+          <%if !@peo.other %>
+              <img class="img8" width="200px" src=<%= @peo.other.url%> />
+          <% else %>
+              <img class="img8" src=<%=image_path('webuploader.png')%> />
+          <%end%>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-3">
+          <button class="btn btn-w-m btn-success mylink" type="submit">确定</button>
+        </div>
+      </div>
+
+  <% end %>
+</div>

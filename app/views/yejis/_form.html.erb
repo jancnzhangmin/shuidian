@@ -1,0 +1,132 @@
+<script language="JavaScript">
+    function get_hetong()
+    {
+        document.getElementById("hidden_hetong").value=document.getElementById("select_hetong").value;
+    }
+    function get_guojia()
+    {
+        document.getElementById("hidden_guojia").value=document.getElementById("select_guojia").value;
+    }
+    function get_projecttype()
+    {
+        document.getElementById("hidden_projecttype").value=document.getElementById("select_projecttype").value;
+    }
+    function get_juese()
+    {
+        document.getElementById("hidden_juese").value=document.getElementById("select_juese").value;
+    }
+
+</script>
+
+
+<div class="ibox-content">
+  <%= form_for(@yeji, :html => {:class=>'form-horizontal m-t'}) do |f| %>
+
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">工期（年）：</label>
+        <div class="col-sm-5">
+          <%= f.number_field :gongqi ,class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">合同金额：</label>
+        <div class="col-sm-5">
+          <%= f.number_field :hetonge ,class:"form-control"%>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">业主电话：</label>
+        <div class="col-sm-5">
+          <%= f.text_field :telyezhu ,class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">付款金额：</label>
+        <div class="col-sm-5">
+          <%= f.number_field :fukunprice ,class:"form-control"%>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">合同类型：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :hetong_id ,id:"hidden_hetong",value:"1" %>
+          <select class="form-control m-b" id="select_hetong" name="account" onchange="get_hetong()">
+            <% @hetongs.each do |hetong| %>
+                <option value=<%= hetong.id %>><%= hetong.hetong %></option>
+            <% end %>
+          </select>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">国家：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :guojia_id ,id:"hidden_guojia", value:"1" %>
+          <select class="form-control m-b" id="select_guojia" name="account" onchange="get_guojia()">
+            <% @guojias.each do |guojia| %>
+                <option value=<%= guojia.id %>><%= guojia.guojia %></option>
+            <% end %>
+          </select>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">实施单位：</label>
+        <div class="col-sm-5">
+          <%= f.text_field :shishidanwei ,class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">项目类型：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :projecttype_id ,id:"hidden_projecttype",value:"1" %>
+          <select class="form-control m-b" id="select_projecttype" name="account" onchange="get_projecttype()">
+            <% @projecttypes.each do |projecttype| %>
+                <option value=<%= projecttype.id %>><%= projecttype.projecttype %></option>
+            <% end %>
+          </select>
+
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">角色：</label>
+        <div class="col-sm-5">
+          <%= f.hidden_field :juese_id ,id:"hidden_juese",value:"1" %>
+          <select class="form-control m-b" id="select_juese" name="account" onchange="get_juese()">
+            <% @jueses.each do |juese| %>
+                <option value=<%= juese.id %>><%= juese.juese %></option>
+            <% end %>
+          </select>
+
+        </div>
+      </div>
+
+
+
+
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-3">
+          <button class="btn btn-w-m btn-success mylink" type="submit">确定</button>
+
+        </div>
+      </div>
+
+
+
+  <% end %>
+</div>

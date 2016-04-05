@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hetong_id: 1
+  guojia_id: 1
+  projecttype_id: 1
+  name-project: MyString
+  gongqi: 1.5
+  hetonge: 1.5
+  name-yezhu: MyString
+  address-yezhu: MyString
+  tel-yezhu: MyString
+  fukun-price: 1.5
+  shishidanwei: MyString
+
+two:
+  hetong_id: 1
+  guojia_id: 1
+  projecttype_id: 1
+  name-project: MyString
+  gongqi: 1.5
+  hetonge: 1.5
+  name-yezhu: MyString
+  address-yezhu: MyString
+  tel-yezhu: MyString
+  fukun-price: 1.5
+  shishidanwei: MyString

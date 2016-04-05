@@ -1,0 +1,55 @@
+<script>
+    $(document).ready(function () {
+        $('.myli2').click(function(){
+            $("#headimg2").attr("src", $(this)[0].src);
+            $('#mylable2').text('');
+            $('#language_id2').val($(this)[0].id);
+        })
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+<%= form_for([@yeji,@yeji.yejiatts.build],:html => {:class=>'form-horizontal m-t',:multipart => true}) do |f| %>
+
+<%= f.hidden_field :langguage_id,id:'language_id2',value:'1' %>
+
+    <div class="input-group-btn">
+      <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><img id="headimg2" width="35px"><lable id="mylable2">语言</lable><span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu myul">
+        <% @languages.each do |language| %>
+
+
+            <li>
+
+              <a> <%= image_tag(language.flag.url,width:"35px", class:'myli2',id:language.id) %>&nbsp;&nbsp;<%= language.language %></a>
+            </li>
+
+        <% end %>
+
+      </ul>
+    </div>
+
+
+
+
+
+    <%= f.text_field :content %>
+    <%= f.hidden_field :keyword,value:'yzmc' %>
+    <button class="btn btn-xs btn-success mylink" type="submit">确定</button>
+
+<% end %>
+
+
+
+
+
+

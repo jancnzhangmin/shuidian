@@ -1,0 +1,59 @@
+{:uriI"œfile://app/assets/javascripts/plugins/layer/layim/data/groups.json?type=application/json&id=57d606aab6fc6c1e102c254ed1825e377a7402bf27a3859f79595dbf22c4eadd:ET:load_pathI"app/assets/javascripts;T:filenameI"@app/assets/javascripts/plugins/layer/layim/data/groups.json;T:	nameI"$plugins/layer/layim/data/groups;T:logical_pathI")plugins/layer/layim/data/groups.json;T:content_typeI"application/json;T:sourceI"{
+    "status": 1,
+    "msg": "ok",
+    "data": [
+        {
+            "id": "100001",
+            "name": "ç„¡è¨€çš„è’èª¬",
+            "face": "img/a1.jpg"
+        },
+        {
+            "id": "100002",
+            "name": "å©·å®å¥¢ä¾ˆå“",
+            "face": "img/a2.jpg"
+        },
+        {
+            "id": "100003",
+            "name": "å¿†æ¨æ€çˆ±",
+            "face": "img/a3.jpg"
+        },
+        {
+            "id": "100004",
+            "name": "å¤©æ¶¯å¥¥æ‹“æ…¢",
+            "face": "img/a4.jpg"
+        },
+        {
+            "id": "100005",
+            "name": "é›¨è½æ— å£°çš„å¤©ç©º",
+            "face": "img/a5.jpg"
+        },
+        {
+            "id": "100006",
+            "name": "æè¶ŠLycorisRadiate",
+            "face": "img/a6.jpg"
+        },
+        {
+            "id": "100007",
+            "name": "å†¯èƒ–å¦å¼ ç›´ä¸‘",
+            "face": "img/a7.jpg"
+        },
+        {
+            "id": "100008",
+            "name": "é™ˆé¾™hmmm",
+            "face": "img/a8.jpg"
+        },
+        {
+            "id": "100009",
+            "name": "åˆ«é—¹å“¥èƒ†å„¿å°",
+            "face": "img/a9.jpg"
+        },
+        {
+            "id": "100010",
+            "name": "é”…é”…é”…é”…èŒå“’å“’ ",
+            "face": "img/a10.jpg"
+        }
+    ]
+};T:metadata{	:dependencieso:Set:
+@hash{	I"environment-version;TTI"environment-paths;TTI"@processors:type=application/json&file_type=application/json;TTI"Nfile-digest://app/assets/javascripts/plugins/layer/layim/data/groups.json;TT:charsetI"
+utf-8;F:digest"%?Ş¾ê[L(×hz)‰Å\Z€¢±ê#¶Ã¨Îã	şFd:lengthi:dependencies_digest"%¦o÷Á9D{û*ùÀùªB‹şôÇ†Mp‡¹±%‡Èv&Í:idI"E57d606aab6fc6c1e102c254ed1825e377a7402bf27a3859f79595dbf22c4eadd;F:
+mtimel+ÂıÖV

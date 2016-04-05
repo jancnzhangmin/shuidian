@@ -1,0 +1,453 @@
+<%= render 'left' %>
+<%= render 'top' %>
+
+<script>
+    $(document).ready(function () {
+
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+
+
+//////////////////////////////////////专业部分
+        var zhuanye_id = getUrlParam('zhuanye_id');
+
+        $('.zhuanye').removeClass('btn-success');
+        $('.zhuanye').addClass('btn-white');
+
+        $('.zhuanye').click( function() {
+            $('.zhuanye').removeClass('btn-success');
+            $('.zhuanye').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#zhuanye_id').val($(this).val());
+
+            var xueliid=getUrlParam('xueli_id');
+            var zhichengid=getUrlParam('zhicheng_id');
+            var zczzyid=getUrlParam('zczzy_id');
+            var name = encodeURI($('#zhuanye_name').val());
+
+            if(xueliid==null)
+            {
+                xueliid=0;
+            }
+            if(zhichengid==null)
+            {
+                zhichengid=0;
+            }
+            if(zczzyid==null)
+            {
+                zczzyid=0;
+            }
+            if(name==null)
+            {
+                name="";
+            }
+            location.href = "?zhuanye_id="+$('#zhuanye_id').val() + "&xueli_id=" + xueliid + "&zhicheng_id=" + zhichengid+"&zczzy_id="+zczzyid+"&name="+name;
+        });
+
+        $('.zhuanye').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == zhuanye_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(zhuanye_id==null) {
+            $('.zhuanye').each(function () {
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
+                //$('#idName').val();
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+
+//////////////////////////////////////学历部分
+        var xueli_id = getUrlParam('xueli_id');
+
+        $('.xueli').removeClass('btn-success');
+        $('.xueli').addClass('btn-white');
+
+        $('.xueli').click( function() {
+            $('.xueli').removeClass('btn-success');
+            $('.xueli').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#xueli_id').val($(this).val());
+            var zhuanyeid=getUrlParam('zhuanye_id');
+            var zhichengid=getUrlParam('zhicheng_id');
+            var zczzyid=getUrlParam('zczzy_id');
+            var name = encodeURI($('#zhuanye_name').val());
+
+            if(zhuanyeid==null)
+            {
+                zhuanyeid=0;
+            }
+            if(zhichengid==null)
+            {
+                zhichengid=0;
+            }
+            if(zczzyid==null)
+            {
+                zczzyid=0;
+            }
+            if(name==null)
+            {
+                name="";
+            }
+            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + $('#xueli_id').val() +"&zhicheng_id=" + zhichengid +"&zczzy_id="+zczzyid+"&name="+name;
+        });
+
+        $('.xueli').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == xueli_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(xueli_id==null) {
+            $('.xueli').each(function () {
+                //var idName= this;
+                //$('#idName').val();
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+//////////////////////////////////////职称部分
+        var zhicheng_id = getUrlParam('zhicheng_id');
+
+        $('.zhicheng').removeClass('btn-success');
+        $('.zhicheng').addClass('btn-white');
+
+        $('.zhicheng').click( function() {
+            $('.zhicheng').removeClass('btn-success');
+            $('.zhicheng').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#zhicheng_id').val($(this).val());
+            var zhuanyeid=getUrlParam('zhuanye_id');
+            var xueliid=getUrlParam('xueli_id');
+            var zczzyid=getUrlParam('zczzy_id');
+            var name = encodeURI($('#zhuanye_name').val());
+
+            if(zhuanyeid==null)
+            {
+                zhuanyeid=0;
+            }
+            if(xueliid==null)
+            {
+                xueliid=0;
+            }
+            if(zczzyid==null)
+            {
+                zczzyid=0;
+            }
+            if(name==null)
+            {
+                name="";
+            }
+            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +  $('#zhicheng_id').val()+"&zczzy_id=" + zczzyid+"&name=" + name;
+        });
+
+        $('.zhicheng').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == zhicheng_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(zhicheng_id==null) {
+            $('.zhicheng').each(function () {
+                //var idName= this;
+                //$('#idName').val();
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+
+        //////////////////////////////////////职称证专业部分
+        var zczzy_id = getUrlParam('zczzy_id');
+
+        $('.zczzy').removeClass('btn-success');
+        $('.zczzy').addClass('btn-white');
+
+        $('.zczzy').click( function() {
+            $('.zczzy').removeClass('btn-success');
+            $('.zczzy').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#zczzy_id').val($(this).val());
+            var zhuanyeid=getUrlParam('zhuanye_id');
+            var xueliid=getUrlParam('xueli_id');
+            var zhichengid=getUrlParam('zhicheng_id');
+            var name = encodeURI($('#zhuanye_name').val());
+
+            if(zhuanyeid==null)
+            {
+                zhuanyeid=0;
+            }
+            if(xueliid==null)
+            {
+                xueliid=0;
+            }
+            if(zhichengid==null)
+            {
+                zhichengid=0;
+            }
+            if(name==null)
+            {
+                name="";
+            }
+            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +zhichengid +"&zczzy_id=" +  $('#zczzy_id').val()+"&name="+name;
+        });
+
+        $('.zczzy').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == zczzy_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(zczzy_id==null) {
+            $('.zczzy').each(function () {
+                //var idName= this;
+                //$('#idName').val();
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+
+        var zhuanye_name=getUrlParam('name');
+        //zhuanye_name= URLDecoder.decode(zhuanye_name, "UTF-8")
+        zhuanye_name=decodeURI(zhuanye_name);
+        if(zhuanye_name==null)
+        {
+            zhuanye_name="";
+        }
+        //$('#zhuanye_name').val(zhuanye_name);
+
+
+        $('.query').click( function() {
+            var zhuanyeid=getUrlParam('zhuanye_id');
+            var xueliid=getUrlParam('xueli_id');
+            var zhichengid=getUrlParam('zhicheng_id');
+            var zczzyid=getUrlParam('zczzy_id');
+            if(zhuanyeid==null)
+            {
+                zhuanyeid=0;
+            }
+            if(xueliid==null)
+            {
+                xueliid=0;
+            }
+            if(zhichengid==null)
+            {
+                zhichengid=0;
+            }
+            if(zczzyid==null)
+            {
+                zczzyid=0;
+            }
+            //var sname = encodeURI($('#zhuanye_name').val(),"UTF-8");
+            var sname = encodeURI($('#zhuanye_name').val());
+            //var sname = java.net.URLDecoder.decode($('#zhuanye_name').val(),"UTF-8")
+            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +zhichengid +"&zczzy_id=" +  zczzyid +"&name="+sname;
+            //$.post("peospeos");
+
+
+        });
+
+
+    });
+</script>
+
+<div class="col-lg-12">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <h5>人员管理</h5>
+<%= @zhuanye_name %>
+    </div>
+
+    <div class="ibox-content" style="height: 240px;">
+      <table class="col-lg-12 table">
+
+        <tr>
+          <td class="col-sm-1">姓名：</td>
+          <td class="col-lg-11">
+            <input class="from-control col-sm-5" type="text" id="zhuanye_name" value= <%= @zhuanye_name %> >&nbsp;<button class="query btn btn-success btn-xs btn-w-s" style="margin-top: 3px;">查询</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="col-sm-1">专业：</td>
+          <td class="col-lg-11">
+            <button class="zhuanye btn btn-success btn-xs" value="0">全部</button>
+            <% @zhuangyes.each do |zhuangye| %>
+                &nbsp;<button class="zhuanye btn btn-white btn-xs" value=<%= zhuangye.id %>><%= zhuangye.zhuangye %></button>
+            <% end %>
+          </td>
+          <td>
+            <input type="hidden" id="zhuanye_id" value="0">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="col-sm-1">学历：</td>
+          <td class="col-lg-11">
+            <button class="xueli btn btn-success btn-xs" value="0">全部</button>
+            <% @xuelis.each do |xueli| %>
+                &nbsp;<button class="xueli btn btn-white btn-xs" value=<%= xueli.id %>><%= xueli.xueli %></button>
+            <% end %>
+          </td>
+          <td>
+            <input type="hidden" id="xueli_id" value="0">
+          </td>
+        </tr>
+
+
+        <tr>
+          <td class="col-sm-1">职称：</td>
+          <td class="col-lg-11">
+            <button class="zhicheng btn btn-success btn-xs" value="0">全部</button>
+            <% @zhichengs.each do |zhicheng| %>
+                &nbsp;<button class="zhicheng btn btn-white btn-xs" value=<%= zhicheng.id %>><%= zhicheng.zhicheng %></button>
+            <% end %>
+          </td>
+          <td>
+            <input type="hidden" id="zhicheng_id" value="0">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="col-sm-1">职称证专业：</td>
+          <td class="col-lg-11">
+            <button class="zczzy btn btn-success btn-xs" value="0">全部</button>
+            <% @zczs.each do |zcz| %>
+                &nbsp;<button class="zczzy btn btn-white btn-xs" value=<%= zcz.id %>><%= zcz.zcz %></button>
+            <% end %>
+          </td>
+          <td>
+            <input type="hidden" id="zczzy_id" value="0">
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+
+
+    <div class="ibox-content">
+
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <th>姓名</th>
+          <th>工作时间</th>
+          <th>学历</th>
+          <th>专业</th>
+          <th>职称</th>
+          <th>职称证专业</th>
+          <th>操作</th>
+
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <% @peos.each do |peo| %>
+            <tr>
+              <td>
+                <%= peo.name %>
+              </td>
+
+              <td>
+                <%= peo.worktime.to_date %>
+              </td>
+
+              <td>
+                <% @xuelis.each do |xueli| %>
+                    <%if peo.xueli_id == xueli.id %>
+                        <%= xueli.xueli %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+              </td>
+
+              <td>
+                <% @zhuangyes.each do |zhuangye| %>
+                    <%if peo.zhuangye_id == zhuangye.id %>
+                        <%= zhuangye.zhuangye %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+              </td>
+
+
+
+              <td>
+                <% @zhichengs.each do |zhicheng| %>
+                    <%if peo.zhicheng_id == zhicheng.id %>
+                        <%= zhicheng.zhicheng %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+              </td>
+
+              <td>
+                <% @zczs.each do |zcz| %>
+                    <%if peo.zcz_id == zcz.id %>
+                        <%= zcz.zcz %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+              </td>
+
+              <td>
+                <%= link_to "", edit_peo_path(peo),class: "fa fa-pencil" %>&nbsp;
+                <%= link_to '', peo, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= link_to "新增", new_peo_path,class: "btn btn-w-m btn-success mylink pull-right" %>
+      <br>
+    </div>
+
+  </div>
+</div>

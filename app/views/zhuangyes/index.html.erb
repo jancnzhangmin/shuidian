@@ -1,0 +1,38 @@
+<%= render 'left' %>
+<%= render 'top' %>
+
+<div class="col-lg-12">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <h5>专业管理</h5>
+
+    </div>
+    <div class="ibox-content">
+
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <th>专业</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @zhuangyes.each do |zhuangye| %>
+            <tr>
+              <td>
+                <%= zhuangye.zhuangye %>
+              </td>
+              <td>
+                <%= link_to "", edit_zhuangye_path(zhuangye),class: "fa fa-pencil" %>&nbsp;
+                <%= link_to '', zhuangye, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= link_to "新增", new_zhuangye_path,class: "btn btn-w-m btn-success mylink pull-right" %>
+      <br>
+    </div>
+
+  </div>
+</div>

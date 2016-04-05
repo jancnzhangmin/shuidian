@@ -1,0 +1,110 @@
+{:uriI"œfile://app/assets/javascripts/plugins/layer/layim/data/friend.json?type=application/json&id=9b9d239b14d74171ea50391dfff9ab4df00ccd5e74b0aef2e1be56a8d7e1c684:ET:load_pathI"app/assets/javascripts;T:filenameI"@app/assets/javascripts/plugins/layer/layim/data/friend.json;T:	nameI"$plugins/layer/layim/data/friend;T:logical_pathI")plugins/layer/layim/data/friend.json;T:content_typeI"application/json;T:sourceI"‰{
+    "status": 1,
+    "msg": "ok",
+    "data": [
+        {
+            "name": "é”€å”®éƒ¨",
+            "nums": 36,
+            "id": 1,
+            "item": [
+                {
+                    "id": "100001",
+                    "name": "éƒ­æ•¬æ˜",
+                    "face": "img/a5.jpg"
+                },
+                {
+                    "id": "100002",
+                    "name": "ä½œå®¶å´”æˆæµ©",
+                    "face": "img/a6.jpg"
+                },
+                {
+                    "id": "1000022",
+                    "name": "éŸ©å¯’",
+                    "face": "img/a7.jpg"
+                },
+                {
+                    "id": "10000222",
+                    "name": "èŒƒçˆ·",
+                    "face": "img/a8.jpg"
+                },
+                {
+                    "id": "100002222",
+                    "name": "å°é©¬å“¥",
+                    "face": "img/a9.jpg"
+                }
+            ]
+        },
+        {
+            "name": "å¤§å­¦åŒçª—",
+            "nums": 16,
+            "id": 2,
+            "item": [
+                {
+                    "id": "1000033",
+                    "name": "è‹é†’",
+                    "face": "img/a9.jpg"
+                },
+                {
+                    "id": "10000333",
+                    "name": "é©¬äº‘",
+                    "face": "img/a8.jpg"
+                },
+                {
+                    "id": "100003",
+                    "name": "é¬¼è„šä¸ƒ",
+                    "face": "img/a7.jpg"
+                },
+                {
+                    "id": "100004",
+                    "name": "è°¢æ¥ ",
+                    "face": "img/a6.jpg"
+                },
+                {
+                    "id": "100005",
+                    "name": "å¾å³¥",
+                    "face": "img/a5.jpg"
+                }
+            ]
+        },
+        {
+            "name": "H+åå°ä¸»é¢˜",
+            "nums": 38,
+            "id": 3,
+            "item": [
+                {
+                    "id": "100006",
+                    "name": "æŸé›ªè¿‘åœ¨å®ƒé¦™",
+                    "face": "img/a4.jpg"
+                },
+                {
+                    "id": "100007",
+                    "name": "ç½—æ˜Œå¹³",
+                    "face": "img/a3.jpg"
+                },
+                {
+                    "id": "100008",
+                    "name": "Crystalå½±å­",
+                    "face": "img/a2.jpg"
+                },
+                {
+                    "id": "100009",
+                    "name": "è‰ºå°æƒ³",
+                    "face": "img/a1.jpg"
+                },
+                {
+                    "id": "100010",
+                    "name": "å¤©çŒ«",
+                    "face": "img/a8.jpg"
+                },
+                {
+                    "id": "100011",
+                    "name": "å¼ æ³‰çµ",
+                    "face": "img/a7.jpg"
+                }
+            ]
+        }
+    ]
+};T:metadata{	:dependencieso:Set:
+@hash{	I"environment-version;TTI"environment-paths;TTI"@processors:type=application/json&file_type=application/json;TTI"Nfile-digest://app/assets/javascripts/plugins/layer/layim/data/friend.json;TT:charsetI"
+utf-8;F:digest"%7ş˜­+Hß­ööGhLèJbÉõ	ïõm@Ú	gÏ«:lengthi‰:dependencies_digest"%Üz€L†õäŠF—=®…ì„ˆPcŞ¦A©‹pÂé¥L:idI"E9b9d239b14d74171ea50391dfff9ab4df00ccd5e74b0aef2e1be56a8d7e1c684;F:
+mtimel+â·ËV

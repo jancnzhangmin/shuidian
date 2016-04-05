@@ -1,0 +1,62 @@
+{:uriI"�file://app/assets/javascripts/demo/photos.json?type=application/json&id=f1bd42f8b3cf05e2ff488eb1a728f55a34ee9eb1dd4879059e0ddc8b5b982327:ET:load_pathI"app/assets/javascripts;T:filenameI",app/assets/javascripts/demo/photos.json;T:	nameI"demo/photos;T:logical_pathI"demo/photos.json;T:content_typeI"application/json;T:sourceI"�{
+    "status": 1,
+    "msg": "",
+    "title": "JSON请求的相册",
+    "id": 8,
+    "start": 0,
+    "data": [
+        {
+            "name": "越来越喜欢观察微小的事物",
+            "pid": 109,
+            "src": "http://sentsin.qiniudn.com/sentsin_39101a660cf4671b7ec297a74cc652c74152104f.jpg",
+            "thumb": "",
+            "area": [
+                638,
+                851
+            ]
+        },
+        {
+            "name": "决定，意味着对与错的并存",
+            "pid": 110,
+            "src": "http://sentsin.qiniudn.com/sentsin_7dee4a4134214dd2d8ff390fbeb11333.jpg",
+            "thumb": "http://sentsin.qiniudn.com/sentsin_7dee4a4134214dd2d8ff390fbeb11333.jpg",
+            "area": [
+                638,
+                851
+            ]
+        },
+        {
+            "name": "给人姐姐般温暖的的邻家女孩",
+            "pid": 111,
+            "src": "http://www.neihanwa.com/upload/2014-5/75/1130439503690738.jpg",
+            "thumb": "http://www.neihanwa.com/upload/2014-5/75/1130439503729167.jpg",
+            "area": [
+                638,
+                851
+            ]
+        },
+        {
+            "name": "人与人关系图",
+            "pid": 112,
+            "src": "http://sentsin.qiniudn.com/sentsinren.jpg",
+            "thumb": "",
+            "area": [
+                638,
+                851
+            ]
+        },
+        {
+            "name": "那忧郁的眼神，含着一丝晶莹的泪花",
+            "pid": 113,
+            "src": "http://sentsin.qiniudn.com/sentsinsan01.jpg",
+            "thumb": "http://sentsin.qiniudn.com/sentsinsan01.jpg",
+            "area": [
+                638,
+                851
+            ]
+        }
+    ]
+};T:metadata{	:dependencieso:Set:
+@hash{	I"environment-version;TTI"environment-paths;TTI"@processors:type=application/json&file_type=application/json;TTI":file-digest://app/assets/javascripts/demo/photos.json;TT:charsetI"
+utf-8;F:digest"%��B=#3�>�R�B�f�#3�5��"e#:lengthi�:dependencies_digest"%fv��w5v�]�{���B.�fr����!��:idI"Ef1bd42f8b3cf05e2ff488eb1a728f55a34ee9eb1dd4879059e0ddc8b5b982327;F:
+mtimel+��V

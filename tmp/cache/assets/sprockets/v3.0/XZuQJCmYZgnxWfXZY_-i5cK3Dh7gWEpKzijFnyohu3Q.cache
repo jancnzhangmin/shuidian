@@ -1,0 +1,33 @@
+{:uriI"file://app/assets/javascripts/plugins/layer/layim/data/chatlog.json?type=application/json&id=1885d606e2fa7a28667c96ca2f5d82d57c295e705d591883be56c78c7889035f:ET:load_pathI"app/assets/javascripts;T:filenameI"Aapp/assets/javascripts/plugins/layer/layim/data/chatlog.json;T:	nameI"%plugins/layer/layim/data/chatlog;T:logical_pathI"*plugins/layer/layim/data/chatlog.json;T:content_typeI"application/json;T:sourceI"†{
+    "status": 1,
+    "msg": "ok",
+    "data": [
+        {
+            "id": "100001",
+            "name": "Beaut-zihan",
+            "time": "10:23",
+            "face": "img/a1.jpg"
+        },
+        {
+            "id": "100002",
+            "name": "æ…•å®¹æ™“æ™“",
+            "time": "æ˜¨å¤©",
+            "face": "img/a2.jpg"
+        },
+        {
+            "id": "1000033",
+            "name": "ä¹”å³°",
+            "time": "2014-4.22",
+            "face": "img/a3.jpg"
+        },
+        {
+            "id": "10000333",
+            "name": "é«˜åœ†åœ†",
+            "time": "2014-4.21",
+            "face": "img/a4.jpg"
+        }
+    ]
+};T:metadata{	:dependencieso:Set:
+@hash{	I"environment-version;TTI"environment-paths;TTI"@processors:type=application/json&file_type=application/json;TTI"Ofile-digest://app/assets/javascripts/plugins/layer/layim/data/chatlog.json;TT:charsetI"
+utf-8;F:digest"%­Æ™w¤k½.WNÑoàe}ø*^ÑCPÖøaØ±‘ìYf:lengthi†:dependencies_digest"%İuœ>n‡óæCC¾3œTR%n{§ÍU–#îñıñ:idI"E1885d606e2fa7a28667c96ca2f5d82d57c295e705d591883be56c78c7889035f;F:
+mtimel+ÂıÖV

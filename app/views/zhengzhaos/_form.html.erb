@@ -1,0 +1,45 @@
+<script type="text/javascript" language="JavaScript">
+    function xiangmuleixingselect(){
+        document.getElementById("achievement_cla_id").value=document.getElementById("claid").value;
+    }
+    function readURL(input,imgid) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.'+imgid)
+                        .attr('src', e.target.result)
+                //.width(300)
+                //.height(200);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<div class="ibox-content">
+  <%= form_for(@zhengzhao, :html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">公司名称：</label>
+        <div class="col-sm-5">
+          <%= f.text_field :namecompany ,class:"form-control"%>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-3">
+          <button class="btn btn-w-m btn-success mylink" type="submit">确定</button>
+
+        </div>
+      </div>
+
+
+
+
+  <% end %>
+</div>

@@ -1,0 +1,50 @@
+<script>
+    $(document).ready(function () {
+        $('.file-box').each(function () {
+            animationHover(this, 'pulse');
+        });
+    });
+</script>
+<br>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;未破产证明</h3>
+
+
+<% @zhengzhao.zhengzhaoexpands.each do |f| %>
+<% if f.keyword.to_s == "wpczm" %>
+
+    <div class="file-box">
+      <div class="file">
+        <a href=<%= f.expand.url %>>
+          <span class="corner"></span>
+          <div class="image" align="center">
+            <% if f.expand_content_type[0,5]=="image"%>
+                <%= image_tag(f.expand.url,width: "300px") %>
+            <%else%>
+                <%= image_tag("attch.png",width:"100px") %>
+            <%end%>
+          </div>
+          <div class="file-name">
+            <%= link_to '',[f.zhengzhao,f], class: "fa fa-trash pull-right fa-2x",style:"margin-top:-15px;", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </a>
+      </div>
+    </div>
+<% end %>
+
+<% end %>
+
+
+<%= form_for([@zhengzhao,@zhengzhao.zhengzhaoexpands.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
+    <div class="form-group">
+      <div class="col-sm-3">
+        <%= f.file_field :expand ,class:"form-control"%>
+        <%= f.hidden_field :keyword, value:"wpczm"%>
+        <%= f.hidden_field :zhengzhao_id,value: @zhengzhao.id %>
+      </div>
+      <div>
+
+        <button class="btn btn-w-m btn-success mylink" type="submit">上传未破产证明</button>
+      </div>
+    </div>
+<% end %>
+<br>

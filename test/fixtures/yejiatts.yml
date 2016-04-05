@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  keyword: MyString
+  yeji_id: 1
+  langguage_id: 1
+
+two:
+  content: MyText
+  keyword: MyString
+  yeji_id: 1
+  langguage_id: 1

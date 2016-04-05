@@ -1,0 +1,38 @@
+<%= render 'left' %>
+<%= render 'top' %>
+
+<div class="col-lg-12">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <h5>职称管理</h5>
+
+    </div>
+    <div class="ibox-content">
+
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <th>职称</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @zhichengs.each do |zhicheng| %>
+            <tr>
+              <td>
+                <%= zhicheng.zhicheng %>
+              </td>
+              <td>
+                <%= link_to "", edit_zhicheng_path(zhicheng),class: "fa fa-pencil" %>&nbsp;
+                <%= link_to '', zhicheng, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= link_to "新增", new_zhicheng_path,class: "btn btn-w-m btn-success mylink pull-right" %>
+      <br>
+    </div>
+
+  </div>
+</div>

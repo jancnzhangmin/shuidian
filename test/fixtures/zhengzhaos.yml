@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zhenshu_id: 1
+  name-company: MyString
+  licence: MyString
+  zizhi-certification: MyString
+  anquan-certification: MyString
+  chenbao-certification: MyString
+  zhanchen: MyString
+  santixi-certification: 
+  shuiwu-certification: MyString
+  dengji-certification: MyString
+  cwbaobiao: MyString
+  org-certification: MyString
+  wsszhenming: MyString
+  wpczhenming: MyString
+  jianjie-company: MyText
+  another: MyText
+
+two:
+  zhenshu_id: 1
+  name-company: MyString
+  licence: MyString
+  zizhi-certification: MyString
+  anquan-certification: MyString
+  chenbao-certification: MyString
+  zhanchen: MyString
+  santixi-certification: 
+  shuiwu-certification: MyString
+  dengji-certification: MyString
+  cwbaobiao: MyString
+  org-certification: MyString
+  wsszhenming: MyString
+  wpczhenming: MyString
+  jianjie-company: MyText
+  another: MyText

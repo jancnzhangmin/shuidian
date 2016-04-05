@@ -1,0 +1,2 @@
+module HuojiangzhenshusHelper
+end

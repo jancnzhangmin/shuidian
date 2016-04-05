@@ -1,0 +1,595 @@
+<%= render 'left' %>
+<%= render 'top' %>
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+    $(document).ready(function () {
+
+
+
+
+
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+
+
+
+        //////////////////////////////////////项目类型
+        var xm_id = getUrlParam('xm_id');
+
+        $('.xm').removeClass('btn-success');
+        $('.xm').addClass('btn-white');
+
+        $('.xm').click( function() {
+            $('.xm').removeClass('btn-success');
+            $('.xm').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#xm_id').val($(this).val());
+
+            var xmid=$(this).val();
+            var hetongid=getUrlParam('hetong_id');
+            var guojiaid=getUrlParam('guojia_id');
+            var ssdw=decodeURI(getUrlParam('ssdw'));
+            var fromtime=getUrlParam('fromtime');
+            var endtime=getUrlParam('endtime');
+            var rmb=$('#rmb').maskMoney('unmasked')[0];
+            var usd=$('#usd').maskMoney('unmasked')[0];
+            if(xmid==null)
+            {
+                xmid=0;
+            }
+            if(hetongid==null)
+            {
+                hetongid=0;
+            }
+            if(guojiaid==null)
+            {
+                guojiaid=0;
+            }
+            if(ssdw==null)
+            {
+                ssdw="";
+            }
+            if(fromtime==null)
+            {
+                fromtime="";
+            }
+            if(endtime==null)
+            {
+                endtime="";
+            }
+            if(rmb==null)
+            {
+                rmb="";
+            }
+            if(usd==null)
+            {
+                usd="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw="+ssdw+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+        });
+
+        $('.xm').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == xm_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(xm_id==null) {
+            $('.xm').each(function () {
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+        //////////////////////////////////////合同类型
+        var hetong_id = getUrlParam('hetong_id');
+
+        $('.hetong').removeClass('btn-success');
+        $('.hetong').addClass('btn-white');
+
+        $('.hetong').click( function() {
+            $('.hetong').removeClass('btn-success');
+            $('.hetong').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#hetong_id').val($(this).val());
+
+            var xmid=getUrlParam('xm_id');
+            var hetongid=$(this).val();
+            var guojiaid=getUrlParam('guojia_id');
+            var ssdw=decodeURI(getUrlParam('ssdw'));
+            var fromtime=getUrlParam('fromtime');
+            var endtime=getUrlParam('endtime');
+            var rmb=$('#rmb').maskMoney('unmasked')[0];
+            var usd=$('#usd').maskMoney('unmasked')[0];
+            if(xmid==null)
+            {
+                xmid=0;
+            }
+            if(hetongid==null)
+            {
+                hetongid=0;
+            }
+            if(guojiaid==null)
+            {
+                guojiaid=0;
+            }
+            if(ssdw==null)
+            {
+                ssdw="";
+            }
+            if(fromtime==null)
+            {
+                fromtime="";
+            }
+            if(endtime==null)
+            {
+                endtime="";
+            }
+            if(rmb==null)
+            {
+                rmb="";
+            }
+            if(usd==null)
+            {
+                usd="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw="+ssdw+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+        });
+
+        $('.hetong').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == hetong_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(hetong_id==null) {
+            $('.hetong').each(function () {
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+
+        //////////////////////////////////////国家
+        var guojia_id = getUrlParam('guojia_id');
+
+        $('.guojia').removeClass('btn-success');
+        $('.guojia').addClass('btn-white');
+
+        $('.guojia').click( function() {
+            $('.guojia').removeClass('btn-success');
+            $('.guojia').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#guojia_id').val($(this).val());
+
+            var xmid=getUrlParam('xm_id');
+            var hetongid=getUrlParam('hetong_id');
+            var guojiaid=$(this).val();
+            var ssdw=decodeURI(getUrlParam('ssdw'));
+            var fromtime=getUrlParam('fromtime');
+            var endtime=getUrlParam('endtime');
+            var rmb=$('#rmb').maskMoney('unmasked')[0];
+            var usd=$('#usd').maskMoney('unmasked')[0];
+            if(xmid==null)
+            {
+                xmid=0;
+            }
+            if(hetongid==null)
+            {
+                hetongid=0;
+            }
+            if(guojiaid==null)
+            {
+                guojiaid=0;
+            }
+            if(ssdw==null)
+            {
+                ssdw="";
+            }
+            if(fromtime==null)
+            {
+                fromtime="";
+            }
+            if(endtime==null)
+            {
+                endtime="";
+            }
+            if(rmb==null)
+            {
+                rmb="";
+            }
+            if(usd==null)
+            {
+                usd="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw="+ssdw+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+        });
+
+        $('.guojia').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == guojia_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(guojia_id==null) {
+            $('.guojia').each(function () {
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+
+
+        /////////////////////////////////////////查询
+        $('.query').click( function() {
+            var xmid=getUrlParam('xm_id');
+            var hetongid=getUrlParam('hetong_id');
+            var guojiaid=getUrlParam('guojia_id');
+            var ssdw=encodeURI($('#ssdw').val());
+            var fromtime=$('#fromtime').val()
+            var endtime=$('#endtime').val()
+            var rmb=$('#rmb').maskMoney('unmasked')[0];
+            var usd=$('#usd').maskMoney('unmasked')[0];
+            if(xmid==null)
+            {
+                xmid=0;
+            }
+            if(hetongid==null)
+            {
+                hetongid=0;
+            }
+            if(guojiaid==null)
+            {
+                guojiaid=0;
+            }
+            if(ssdw==null)
+            {
+                ssdw="";
+            }
+            if(fromtime==null)
+            {
+                fromtime="";
+            }
+            if(endtime==null)
+            {
+                endtime="";
+            }
+            if(rmb==null)
+            {
+                rmb="";
+            }
+            if(usd==null)
+            {
+                usd="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw="+ssdw+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+        });
+
+
+////////////////////////////////////////////加载
+        $('#ssdw').val(decodeURI(getUrlParam('ssdw')));
+        if (decodeURI(getUrlParam('ssdw'))=='null')
+        {
+            $('#ssdw').val("");
+        }
+
+        $('#fromtime').val(getUrlParam('fromtime'));
+        if (getUrlParam('fromtime')=='null')
+        {
+            $('#fromtime').val("");
+        }
+
+        $('#endtime').val(getUrlParam('endtime'));
+        if (getUrlParam('endtime')=='null')
+        {
+            $('#endtime').val("");
+        }
+
+        $('#rmb').val(getUrlParam('rmb'));
+        if (getUrlParam('rmb')=='null')
+        {
+            $('#rmb').val("");
+        }
+
+        $('#usd').val(getUrlParam('usd'));
+        if (getUrlParam('usd')=='null')
+        {
+            $('#usd').val("");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $('#data_5 .input-daterange').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+
+
+
+
+        $('#rmb').maskMoney();
+        $('#usd').maskMoney();
+
+
+
+
+    });
+
+
+
+</script>
+
+
+
+
+<div class="col-lg-12">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <h5>业绩管理</h5>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="ibox-content" style="height: 240px;">
+  <table class="col-lg-12 table">
+
+    <tr>
+      <td class="col-sm-2">项目类型：</td>
+      <td class="col-lg-11">
+      &nbsp;<button  class="xm btn btn-success btn-xs btn-w-s" style="margin-top: 3px;" value="0">全部</button>
+        <%@projecttypes.each do |f|%>
+            &nbsp;<button class="xm btn btn-white btn-xs" value=<%= f.id %>><%= f.projecttype %></button>
+        <%end%>
+        <input type="hidden" id="xm_id" value="0">
+       </td>
+    </tr>
+
+    <tr>
+      <td class="col-sm-1">合同类型：</td>
+      <td class="col-lg-11">
+        &nbsp;<button  class="hetong btn btn-success btn-xs btn-w-s" style="margin-top: 3px;" value="0">全部</button>
+        <%@hetongs.each do |f|%>
+            &nbsp;<button class="hetong btn btn-white btn-xs" value=<%= f.id %>><%= f.hetong %></button>
+        <%end%>
+        <input type="hidden" id="hetong_id" value="0">
+      </td>
+    </tr>
+    <tr>
+      <td class="col-sm-1">国家：</td>
+      <td class="col-lg-11">
+        &nbsp;<button  class="guojia btn btn-success btn-xs btn-w-s" style="margin-top: 3px;" value="0">全部</button>
+        <%@guojias.each do |f|%>
+            &nbsp;<button class="guojia btn btn-white btn-xs" value=<%= f.id %>><%= f.guojia %></button>
+        <%end%>
+        <input type="hidden" id="guojia_id" value="0">
+      </td>
+    </tr>
+    <tr>
+
+      <td class="col-lg-12" colspan="2">
+        <table>
+          <td>
+        实施单位：
+</td>
+          <td>
+        <input class="input-sm form-control" type="text" id="ssdw">
+          </td>
+          </td>
+          <td>
+        &nbsp;&nbsp;工期：
+          </td>
+          <td>
+        <div class="form-group" id="data_5">
+
+          <div class="input-daterange input-group" id="datepicker" style="margin-top: 14px;">
+            <input type="text" class="input-sm form-control" name="start" id="fromtime"  />
+            <span class="input-group-addon">到</span>
+            <input type="text" class="input-sm form-control" name="end" id="endtime" />
+          </div>
+        </div>
+          </td>
+          <td>
+        &nbsp;&nbsp;合同金额：
+            </td>
+          <td>
+            <div class="input-group m-b" style="margin-top: 14px;"><span class="input-group-addon" >&yen;</span>
+              <input style="width: 120px;" type="text" class="currency form-control" id="rmb">
+            </div>
+          </td>
+          <td>
+            <div class="input-group m-b" style="margin-top: 14px;"><span class="input-group-addon" >$</span>
+              <input style="width: 120px;" type="text" class="currency form-control" id="usd">
+            </div>
+          </td>
+          <td>
+            &nbsp;<button class="query btn btn-success btn-xs btn-w-s" style="margin-top: 3px;">查询</button>
+          </td>
+        </table>
+      </td>
+    </tr>
+
+  </table>
+  </div>
+
+
+
+
+
+
+
+
+
+<div class="ibox-content">
+<% @projecttypes.each do |p| %>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins border-bottom">
+      <div class="ibox-title">
+        <h5><%= p.projecttype %> </h5>
+        <div class="ibox-tools">
+          <a class="collapse-link">
+            <i class="fa fa-chevron-down"></i>
+          </a>
+        </div>
+      </div>
+      <div class="ibox-content" style="display: none;">
+
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th>项目名称</th>
+            <th>工期（年）</th>
+            <th>合同金额</th>
+            <th>合同类型</th>
+            <th>国家</th>
+            <th>实施单位</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @yejis.each do |yeji| %>
+          <% if yeji.projecttype_id == p.id %>
+              <tr>
+
+                <td>
+                  <% @yejiatts.each do |f| %>
+                      <% if f.yeji_id.to_s == yeji.id.to_s && f.keyword =='xmmc' %>
+                          <%= f.content %>
+                          <% break %>
+                      <% end %>
+                  <% end %>
+
+                  <% @yejiatts.each do |f| %>
+                      <% if f.yeji_id.to_s == yeji.id.to_s && f.keyword =='xmmc' %>
+
+
+                          <% @languages.each do |l| %>
+
+                              <% if f.langguage_id == l.id %>
+
+                                  <%= image_tag(l.flag.url,width: '30px') %>
+                              <% end %>
+
+                          <% end %>
+
+
+
+                      <% end %>
+                  <% end %>
+
+
+                </td>
+
+                <td>
+                  <%= yeji.gongqi %>
+                </td>
+
+                <td>
+                  <%= yeji.hetonge %>
+                </td>
+
+
+                <td>
+                  <% @hetongs.each do |f| %>
+                      <% if f.id.to_s == yeji.hetong_id.to_s %>
+                          <%= f.hetong %>
+                          <% break %>
+                      <% end %>
+                  <% end %>
+                </td>
+
+                <td>
+                  <% @guojias.each do |f| %>
+                      <% if f.id.to_s == yeji.guojia_id.to_s %>
+                          <%= f.guojia %>
+                          <% break %>
+                      <% end %>
+                  <% end %>
+                </td>
+
+                <td>
+                  <%= yeji.shishidanwei %>
+                </td>
+
+                <td>
+                  <%= link_to "", edit_yeji_path(yeji),class: "fa fa-pencil" %>&nbsp;
+                  <%= link_to '', yeji, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+          <% end %>
+          <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% end %>
+
+
+<div >
+  <%= link_to "新增", new_yeji_path,class: "btn btn-w-m btn-success mylink pull-right" %>
+<br>
+
+</div>
+</div>
