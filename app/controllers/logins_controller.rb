@@ -2,7 +2,10 @@ class LoginsController < ApplicationController
 
 
   def new
-
+ adm= Admin.all
+    if adm.count==0
+      Admin.create(name:'管理员',login:'admin',password:'admin',password_confirmation:'admin',status:'1')
+    end
   end
 
   def create

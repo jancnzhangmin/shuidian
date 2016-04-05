@@ -16,6 +16,20 @@
         document.getElementById("hidden_juese").value=document.getElementById("select_juese").value;
     }
 
+
+    $(document).ready(function () {
+
+        $('#rmb').maskMoney();
+        $('#usd').maskMoney();
+
+        $("#rmb").change(function(){
+            $("#rmb_id").val($('#rmb').maskMoney('unmasked')[0]);
+        });
+        $("#usd").change(function(){
+            $("#usd_id").val($('#usd').maskMoney('unmasked')[0]);
+        });
+
+    });
 </script>
 
 
@@ -38,6 +52,29 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label class="col-sm-3 control-label">合同金额：</label>
+        <table>
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+              <div class="input-group m-b"><span class="input-group-addon" >&yen;</span>
+                <input style="width: 200px;" type="text" class=" form-control" id="rmb">
+                <%= f.hidden_field :hetonge ,class:"form-control", id:'rmb_id',value:'0'%>
+              </div>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+
+              <div class="input-group m-b">
+                <span class="input-group-addon" >$</span>
+                <input style="width: 200px;" type="text" class=" form-control" id="usd">
+                <%= f.hidden_field :meiyuan ,class:"form-control", id:'usd_id', value:'0'%>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
 
 
       <div class="form-group">
@@ -115,6 +152,7 @@
 
         </div>
       </div>
+
 
 
 

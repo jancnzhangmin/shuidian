@@ -14,9 +14,54 @@ class YejisController < ApplicationController
 
 
 
+    @ssdw=params[:ssdw]
+
+
+    myselect ='select * from yejis where '
+
+    if params[:ssdw]
+      myselect = myselect + 'shishidanwei like '+'"%'+ params[:ssdw] +'%"'
+    end
+
+    if params[:xm_id] && params[:xm_id] >'0'
+      myselect = myselect + ' and projecttype_id = '+params[:xm_id]
+    end
+
+    if params[:hetong_id] && params[:hetong_id] > '0'
+      myselect = myselect + ' and hetong_id = '+params[:hetong_id]
+    end
+
+    if params[:guojia_id] && params[:guojia_id] > '0'
+      myselect = myselect + ' and guojia_id = '+params[:guojia_id]
+    end
+    if params[:rmb] && params[:rmb] > '0'
+      myselect = myselect + ' and hetonge >='+params[:rmb]
+    end
+    if params[:usd] && params[:usd] > '0'
+      myselect = myselect + ' and meiyuan >='+params[:usd]
+    end
+if (params[:fromtime]!=nil)
+  fromyear= params[:fromtime][0,4]
+  endyear=params[:endtime][0,4]
+
+if fromyear != "" && endyear != ""
+  myselect = myselect + ' and gongqi >= '+ fromyear.to_s + ' and gongqi <=' + endyear.to_s
+elsif fromyear && fromyear != ""
+
+  myselect = myselect + ' and gongqi >= '+ fromyear.to_s
+elsif  endyear && endyear != ""
+  myselect = myselect + ' and gongqi <= '+ endyear.to_s
+
+end
 
 
 
+  @yejis=Yeji.find_by_sql(myselect)
+
+
+
+
+end
 
 
 

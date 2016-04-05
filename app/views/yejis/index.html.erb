@@ -304,7 +304,9 @@
 
 
 ////////////////////////////////////////////加载
-        $('#ssdw').val(decodeURI(getUrlParam('ssdw')));
+
+
+
         if (decodeURI(getUrlParam('ssdw'))=='null')
         {
             $('#ssdw').val("");
@@ -374,7 +376,6 @@
 
 
 
-
 <div class="col-lg-12">
   <div class="ibox float-e-margins">
     <div class="ibox-title">
@@ -382,8 +383,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 <div class="ibox-content" style="height: 240px;">
@@ -428,7 +427,7 @@
         实施单位：
 </td>
           <td>
-        <input class="input-sm form-control" type="text" id="ssdw">
+        <input class="input-sm form-control" type="text" id="ssdw" value=<%= @ssdw %>  >
           </td>
           </td>
           <td>
