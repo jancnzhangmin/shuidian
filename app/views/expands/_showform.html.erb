@@ -1,0 +1,41 @@
+<script>
+    $(document).ready(function () {
+        $('.file-box').each(function () {
+            animationHover(this, 'pulse');
+        });
+    });
+</script>
+<div class="ibox-content">
+
+  <h3>&nbsp;&nbsp;&nbsp;&nbsp;附件</h3>
+
+
+  <% @yeji.expands.each do |f| %>
+
+      <div class="file-box">
+        <div class="file">
+          <a href=<%= f.expand.url %>>
+            <span class="corner"></span>
+
+            <div class="image" align="center">
+
+
+
+              <img src=<%= image_path('attch.png') %> width=100px>
+            </div>
+            <div class="file-name">
+              <%= f.expandname %>
+
+            </div>
+          </a>
+        </div>
+      </div>
+
+  <% end %>
+<br><br><br><br><br><br><br>
+
+
+
+</div>
+
+

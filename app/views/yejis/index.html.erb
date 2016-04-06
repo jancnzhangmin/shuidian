@@ -510,7 +510,8 @@
                 <td>
                   <% @yejiatts.each do |f| %>
                       <% if f.yeji_id.to_s == yeji.id.to_s && f.keyword =='xmmc' %>
-                          <%= f.content %>
+
+                          <%= link_to f.content,yeji_path(yeji) %>
                           <% break %>
                       <% end %>
                   <% end %>

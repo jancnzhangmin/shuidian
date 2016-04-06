@@ -19,15 +19,31 @@
 
     $(document).ready(function () {
 
-        $('#rmb').maskMoney();
+
+        $('#rmb').val($('#rmb_id').val());
+        $('#usd').val($('#usd_id').val());
+
+            $('#rmb').maskMoney();
+
         $('#usd').maskMoney();
 
         $("#rmb").change(function(){
-            $("#rmb_id").val($('#rmb').maskMoney('unmasked')[0]);
+
+                $("#rmb_id").val($('#rmb').maskMoney('unmasked')[0]);
+
         });
         $("#usd").change(function(){
             $("#usd_id").val($('#usd').maskMoney('unmasked')[0]);
         });
+
+
+
+
+
+
+
+
+
 
     });
 </script>
@@ -45,12 +61,6 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">合同金额：</label>
-        <div class="col-sm-5">
-          <%= f.number_field :hetonge ,class:"form-control"%>
-        </div>
-      </div>
 
       <div class="form-group">
         <label class="col-sm-3 control-label">合同金额：</label>
@@ -60,7 +70,7 @@
             <td>
               <div class="input-group m-b"><span class="input-group-addon" >&yen;</span>
                 <input style="width: 200px;" type="text" class=" form-control" id="rmb">
-                <%= f.hidden_field :hetonge ,class:"form-control", id:'rmb_id',value:'0'%>
+                <%= f.hidden_field :hetonge ,class:"form-control", id:'rmb_id'%>
               </div>
             </td>
             <td>&nbsp;</td>
@@ -69,14 +79,14 @@
               <div class="input-group m-b">
                 <span class="input-group-addon" >$</span>
                 <input style="width: 200px;" type="text" class=" form-control" id="usd">
-                <%= f.hidden_field :meiyuan ,class:"form-control", id:'usd_id', value:'0'%>
+                <%= f.hidden_field :meiyuan ,class:"form-control", id:'usd_id'%>
               </div>
             </td>
           </tr>
         </table>
       </div>
 
-
+      <%= f.hidden_field :isnew ,class:"form-control",value:'0'%>
       <div class="form-group">
         <label class="col-sm-3 control-label">业主电话：</label>
         <div class="col-sm-5">
@@ -154,15 +164,15 @@
       </div>
 
 
-
-
-
       <div class="form-group">
         <div class="col-sm-4 col-sm-offset-3">
           <button class="btn btn-w-m btn-success mylink" type="submit">确定</button>
 
         </div>
       </div>
+
+
+
 
 
 

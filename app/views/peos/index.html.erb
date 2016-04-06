@@ -392,7 +392,8 @@
         <% @peos.each do |peo| %>
             <tr>
               <td>
-                <%= peo.name %>
+
+                <%= link_to peo.name,peo_path(peo) %>
               </td>
 
               <td>

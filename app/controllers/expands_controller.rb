@@ -3,14 +3,14 @@ class ExpandsController < ApplicationController
   def create
     @yeji=Yeji.find(params[:yeji_id])
     @expand=@yeji.expands.create(expand_params)
-    redirect_to yeji_path(@yeji)
+    redirect_to edit_yeji_path(@yeji)
   end
 
   def destroy
     @yeji = Yeji.find(params[:yeji_id])
     @expand = @yeji.expands.find(params[:id])
     @expand.destroy
-    redirect_to yeji_path(@yeji)
+    redirect_to edit_yeji_path(@yeji)
   end
 
   private

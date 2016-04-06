@@ -3,14 +3,14 @@ class YejiattsController < ApplicationController
   def create
     @yeji=Yeji.find(params[:yeji_id])
     @yejiatt=@yeji.yejiatts.create(yejiatt_params)
-    redirect_to yeji_path(@yeji)
+    redirect_to edit_yeji_path(@yeji)
   end
 
   def destroy
     @yeji = Yeji.find(params[:yeji_id])
     @yejiatt = @yeji.yejiatts.find(params[:id])
     @yejiatt.destroy
-    redirect_to yeji_path(@yeji)
+    redirect_to edit_yeji_path(@yeji)
   end
 
   private

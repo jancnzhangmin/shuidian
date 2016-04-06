@@ -5,6 +5,16 @@ class YejisController < ApplicationController
   # GET /tests
   # GET /tests.json
   def index
+
+
+    yejisdel= Yeji.find_by(isnew:'1')
+    if yejisdel
+yejisdel.destroy
+end
+
+
+
+
     @yejis = Yeji.all
     @hetongs= Hetong.all
     @guojias = Coun.all
@@ -96,10 +106,23 @@ end
     @guojias=Coun.all
     @projecttypes=Projecttype.all
     @jueses = Juese.all
+
+    yeji=Yeji.create(isnew:'1')
+    redirect_to edit_yeji_path(yeji)
+
+
+
   end
 
   # GET /tests/1/edit
   def edit
+    @yeji=Yeji.find(params[:id])
+    @yejiatts=@yeji.yejiatts
+    @hetongs=Hetong.all
+    @guojias=Coun.all
+    @projecttypes=Projecttype.all
+    @jueses=Juese.all
+    @languages = Language.all
   end
 
   # POST /tests
@@ -150,7 +173,7 @@ end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def yeji_params
-    params.require(:yeji).permit(:hetong_id, :guojia_id, :projecttype_id, :juese_id, :nameproject, :gongqi, :hetonge, :nameyezhu, :addressyezhu,:telyezhu, :fukunprice, :shishidanwei, :meiyuan)
+    params.require(:yeji).permit(:hetong_id, :guojia_id, :projecttype_id, :juese_id, :nameproject, :gongqi, :hetonge, :nameyezhu, :addressyezhu,:telyezhu, :fukunprice, :shishidanwei, :meiyuan, :isnew)
   end
 
 end

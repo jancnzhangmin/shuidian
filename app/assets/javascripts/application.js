@@ -32,3 +32,4 @@
 //= require plugins/slimscroll/jquery.slimscroll.min.js
 //= require plugins/datapicker/bootstrap-datepicker.js
 //= require jquery.maskMoney.js
+//= require formatCurrency.js

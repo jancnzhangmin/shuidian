@@ -1,0 +1,112 @@
+<%= render 'left' %>
+<%= render 'top' %>
+
+<div class="ibox-content form-horizontal m-t">
+
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">项目名称</label>
+    <div class="col-sm-9">
+      <% @yejiatts.each do |f| %>
+          <% if f.keyword == 'xmmc' %>
+              <div class="m-b">
+                <% @languages.each do |flag| %>
+                    <% if f.langguage_id.to_s == flag.id.to_s %>
+                        <%=image_tag(flag.flag.url,width: '35px')  %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+                <%= f.content %>
+              </div>
+          <% end %>
+      <% end %>
+      <%= render 'yejiatts/xmmc' %>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<div class="form-group">
+  <label class="col-sm-3 control-label">业主名称</label>
+
+  <div class="col-sm-9">
+
+    <% @yejiatts.each do |f| %>
+        <% if f.keyword == 'yzmc' %>
+            <div class="m-b">
+              <% @languages.each do |flag| %>
+                  <% if f.langguage_id.to_s == flag.id.to_s %>
+                      <%=image_tag(flag.flag.url,width: '35px')  %>
+                      <% break %>
+                  <% end %>
+              <% end %>
+              <%= f.content %>
+            </div>
+        <% end %>
+    <% end %>
+    <%= render 'yejiatts/yzmc' %>
+  </div>
+</div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">业主地址</label>
+
+    <div class="col-sm-9">
+
+      <% @yejiatts.each do |f| %>
+          <% if f.keyword == 'yzdz' %>
+              <div class="m-b">
+                <% @languages.each do |flag| %>
+                    <% if f.langguage_id.to_s == flag.id.to_s %>
+                        <%=image_tag(flag.flag.url,width: '35px')  %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+                <%= f.content %>
+              </div>
+          <% end %>
+      <% end %>
+      <%= render 'yejiatts/yzdz' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">项目简介</label>
+
+    <div class="col-sm-9">
+
+      <% @yejiatts.each do |f| %>
+          <% if f.keyword == 'xmjj' %>
+              <div class="m-b">
+                <% @languages.each do |flag| %>
+                    <% if f.langguage_id.to_s == flag.id.to_s %>
+                        <%=image_tag(flag.flag.url,width: '35px')  %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+                <%= f.content %>
+              </div>
+          <% end %>
+      <% end %>
+      <%= render 'yejiatts/xmjj' %>
+    </div>
+  </div>
+
+
+
+  <%= render 'form' %>
+
+
+  <%= render 'expands/form' %>
+
+
+
+
+
+
+
+</div>
