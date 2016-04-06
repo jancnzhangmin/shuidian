@@ -1,0 +1,34 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+
+
+# Jetbrains
+.idea/
+
+# MAC OS
+.DS_Store
+
+# Vim
+*.swp
+*.bak
+development.sqlite3
+
+config/application.yml
+config/secrets.yml
+config/database.yml
+.capistrano/
+price.csv
+public/assets
+public/uploads
+public/logs/payment
+config/payment.yml
+
