@@ -29,6 +29,11 @@ Rails.application.routes.draw do
   resources :zczs
   resources :jueses
   resources :languages
+  resources :xmjianlis do
+    resources :xmatts
+  end
+  resources :xmlanguages
+  resources :xmcouns
 
 
   root 'logins#new'

@@ -1,0 +1,64 @@
+<script>
+    $(document).ready(function () {
+        $('.file-box').each(function () {
+            animationHover(this, 'pulse');
+        });
+    });
+</script>
+<div class="ibox-content">
+
+  <h3>&nbsp;&nbsp;&nbsp;&nbsp;附件</h3>
+
+
+  <% @xmjianli.xmatts.each do |f| %>
+
+      <div class="file-box">
+        <div class="file">
+          <a href=<%= f.attch.url %>>
+            <span class="corner"></span>
+
+            <div class="image" align="center">
+
+
+
+              <img src=<%= image_path('attch.png') %> width=100px>
+            </div>
+            <div class="file-name">
+              <%= f.name %>
+              <%= link_to '',[f.xmjianli,f], class: "fa fa-trash pull-right fa-2x", method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </a>
+        </div>
+      </div>
+
+  <% end %>
+
+  <div class="ibox-content">
+
+    <%= form_for([@xmjianli,@xmjianli.xmatts.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">附件名称：</label>
+          <div class="col-sm-3">
+            <%= f.text_field :name ,class:"form-control"%>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">选择附件：</label>
+          <div class="col-sm-3">
+            <%= f.file_field :attch ,class:"form-control"%>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label"></label>
+          <div class="col-sm-3">
+            <button class="btn btn-w-m btn-success mylink" type="submit">上传附件</button>
+          </div>
+        </div>
+        </div>
+    <% end %>
+    </div>
+
+

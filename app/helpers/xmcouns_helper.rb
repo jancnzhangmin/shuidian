@@ -1,0 +1,2 @@
+module XmcounsHelper
+end

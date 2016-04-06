@@ -1,0 +1,59 @@
+<%= render 'left' %>
+<%= render 'top' %>
+
+
+
+<div class="ibox-content form-horizontal m-t">
+
+
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">项目名称</label>
+
+    <div class="col-sm-9" style="margin-top: 6px;">
+<%= @xmjianli.name %>
+
+    </div>
+  </div>
+
+
+
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">国家</label>
+
+    <div class="col-sm-9" style="margin-top: 6px;">
+
+      <% @couns.each do |f| %>
+
+          <% if f.id == @xmjianli.xmcoun_id %>
+          <%= f.coun %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">语言</label>
+
+    <div class="col-sm-9" style="margin-top: 6px;">
+
+      <% @languages.each do |f| %>
+
+          <% if f.id == @xmjianli.xmlanguage_id %>
+              <%= f.language %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+    </div>
+
+
+
+
+
+<%= render 'xmatts/showform' %>

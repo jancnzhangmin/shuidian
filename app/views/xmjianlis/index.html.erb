@@ -1,0 +1,81 @@
+<%= render 'left' %>
+<%= render 'top' %>
+
+<div class="col-lg-12">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <h5>简历管理</h5>
+
+    </div>
+
+
+
+
+    <div class="ibox-content">
+
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <th>国家</th>
+          <th>项目名称</th>
+          <th>语言</th>
+          <th>操作</th>
+
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <% @xmjianlis.each do |xmjianli| %>
+            <tr>
+              <td>
+
+
+
+                <% @couns.each do |f| %>
+                <% if xmjianli.xmcoun_id == f.id %>
+                    <%= f.coun %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+
+
+              </td>
+
+              <td>
+                <%= xmjianli.name %>
+              </td>
+
+              <td>
+                <% @languages.each do |f| %>
+                    <% if xmjianli.xmlanguage_id == f.id %>
+                        <%= f.language %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+              </td>
+
+
+
+
+
+
+
+
+
+
+              <td>
+                <%= link_to "", edit_xmjianli_path(xmjianli),class: "fa fa-pencil" %>&nbsp;
+                <%= link_to '', xmjianli, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= link_to "新增", new_xmjianli_path,class: "btn btn-w-m btn-success mylink pull-right" %>
+      <br>
+    </div>
+
+  </div>
+</div>

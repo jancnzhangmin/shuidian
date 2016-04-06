@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406001218) do
+ActiveRecord::Schema.define(version: 20160406035625) do
 
   create_table "abcs", force: :cascade do |t|
     t.integer  "num",        limit: 4
@@ -184,6 +184,38 @@ ActiveRecord::Schema.define(version: 20160406001218) do
 
   create_table "tests", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "xmatts", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.integer  "xmjianli_id",        limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "attch_file_name",    limit: 255
+    t.string   "attch_content_type", limit: 255
+    t.integer  "attch_file_size",    limit: 4
+    t.datetime "attch_updated_at"
+  end
+
+  create_table "xmcouns", force: :cascade do |t|
+    t.string   "coun",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "xmjianlis", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.integer  "xmlanguage_id", limit: 4
+    t.integer  "xmcoun_id",     limit: 4
+    t.integer  "isnew",         limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "xmlanguages", force: :cascade do |t|
+    t.string   "language",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
