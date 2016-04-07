@@ -22,18 +22,20 @@
 
         $('#rmb').val($('#rmb_id').val());
         $('#usd').val($('#usd_id').val());
+        $('#fk').val($('#fk_id').val());
 
-            $('#rmb').maskMoney();
-
+        $('#rmb').maskMoney();
         $('#usd').maskMoney();
+        $('#fk').maskMoney();
 
         $("#rmb").change(function(){
-
-                $("#rmb_id").val($('#rmb').maskMoney('unmasked')[0]);
-
+            $("#rmb_id").val($('#rmb').maskMoney('unmasked')[0]);
         });
         $("#usd").change(function(){
             $("#usd_id").val($('#usd').maskMoney('unmasked')[0]);
+        });
+        $("#fk").change(function(){
+            $("#fk_id").val($('#fk').maskMoney('unmasked')[0]);
         });
 
 
@@ -97,7 +99,8 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">付款金额：</label>
         <div class="col-sm-5">
-          <%= f.number_field :fukunprice ,class:"form-control"%>
+          <%= f.hidden_field :fukunprice ,class:"form-control", id:'fk_id'%>
+          <input  type="text" class=" form-control" id="fk">
         </div>
       </div>
 
@@ -131,7 +134,13 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">实施单位：</label>
         <div class="col-sm-5">
-          <%= f.text_field :shishidanwei ,class:"form-control"%>
+          <%= f.hidden_field :ssdw_id ,id:"hidden_ssdw", value:"1" %>
+          <select class="form-control m-b" id="select_ssdw" name="account" onchange="get_guojia()">
+            <% @ssdws.each do |ssdw| %>
+                <option value=<%= ssdw.id %>><%= ssdw.name %></option>
+            <% end %>
+          </select>
+
         </div>
       </div>
 

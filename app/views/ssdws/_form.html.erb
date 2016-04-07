@@ -1,0 +1,19 @@
+<div class="ibox-content">
+  <%= form_for(@ssdw, :html => {:class=>'form-horizontal m-t'}) do |f| %>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">实施单位：</label>
+        <div class="col-sm-5">
+          <%= f.text_field :name ,class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-3">
+          <button class="btn btn-w-m btn-success mylink" type="submit">确定</button>
+
+        </div>
+      </div>
+
+  <% end %>
+</div>

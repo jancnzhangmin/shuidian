@@ -21,16 +21,17 @@ end
     @yejiatts = Yejiatt.all
     @languages = Language.all
     @projecttypes = Projecttype.all
+    @ssdws = Ssdw.all
 
 
 
     @ssdw=params[:ssdw]
 
 
-    myselect ='select * from yejis where '
+    myselect ='select * from yejis where shishidanwei like "%%" '
 
-    if params[:ssdw]
-      myselect = myselect + 'shishidanwei like '+'"%'+ params[:ssdw] +'%"'
+    if params[:ssdw_id] && params[:ssdw_id] > '0'
+      myselect = myselect + ' and ssdw_id = '+ params[:ssdw_id]
     end
 
     if params[:xm_id] && params[:xm_id] >'0'
@@ -97,6 +98,7 @@ end
     @projecttype=Projecttype.find(@yeji.projecttype_id)
     @juese=Juese.find(@yeji.juese_id)
     @languages = Language.all
+    @ssdw = Ssdw.find(@yeji.ssdw_id)
   end
 
   # GET /tests/new
@@ -123,6 +125,7 @@ end
     @projecttypes=Projecttype.all
     @jueses=Juese.all
     @languages = Language.all
+    @ssdws = Ssdw.all
   end
 
   # POST /tests
@@ -146,7 +149,7 @@ end
   def update
     respond_to do |format|
       if @yeji.update(yeji_params)
-        format.html { redirect_to @yeji, notice: 'Test was successfully updated.' }
+        format.html { redirect_to edit_yeji_path(@yeji), notice: 'Test was successfully updated.' }
         format.json { render :show, status: :ok, location: @yeji }
       else
         format.html { render :edit }
@@ -173,7 +176,7 @@ end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def yeji_params
-    params.require(:yeji).permit(:hetong_id, :guojia_id, :projecttype_id, :juese_id, :nameproject, :gongqi, :hetonge, :nameyezhu, :addressyezhu,:telyezhu, :fukunprice, :shishidanwei, :meiyuan, :isnew)
+    params.require(:yeji).permit(:ssdw_id, :hetong_id, :guojia_id, :projecttype_id, :juese_id, :nameproject, :gongqi, :hetonge, :nameyezhu, :addressyezhu,:telyezhu, :fukunprice, :shishidanwei, :meiyuan, :isnew)
   end
 
 end

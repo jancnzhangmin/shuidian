@@ -5,4 +5,5 @@ class Yeji < ActiveRecord::Base
   has_many :expands
   has_many :yejiatts
   has_many :jueses
+  belongs_to :ssdw
 end

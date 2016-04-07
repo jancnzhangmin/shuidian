@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406035625) do
+ActiveRecord::Schema.define(version: 20160406232308) do
 
   create_table "abcs", force: :cascade do |t|
     t.integer  "num",        limit: 4
@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(version: 20160406035625) do
     t.datetime "flag_updated_at"
   end
 
+  create_table "peoatts", force: :cascade do |t|
+    t.integer  "peo_id",             limit: 4
+    t.string   "keyword",            limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "attch_file_name",    limit: 255
+    t.string   "attch_content_type", limit: 255
+    t.integer  "attch_file_size",    limit: 4
+    t.datetime "attch_updated_at"
+  end
+
   create_table "people", force: :cascade do |t|
     t.integer  "zhuangye_id",          limit: 4
     t.integer  "xueli_id",             limit: 4
@@ -174,12 +185,19 @@ ActiveRecord::Schema.define(version: 20160406035625) do
     t.string   "other_content_type",                limit: 255
     t.integer  "other_file_size",                   limit: 4
     t.datetime "other_updated_at"
+    t.integer  "isnew",                             limit: 4
   end
 
   create_table "projecttypes", force: :cascade do |t|
     t.string   "projecttype", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "ssdws", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "tests", force: :cascade do |t|
@@ -261,6 +279,7 @@ ActiveRecord::Schema.define(version: 20160406035625) do
     t.integer  "juese_id",       limit: 4
     t.float    "meiyuan",        limit: 24
     t.integer  "isnew",          limit: 4
+    t.integer  "ssdw_id",        limit: 4
   end
 
   create_table "zczs", force: :cascade do |t|
@@ -275,6 +294,17 @@ ActiveRecord::Schema.define(version: 20160406035625) do
     t.string   "zczzy",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "zhengzhaoatts", force: :cascade do |t|
+    t.integer  "zhengzhao_id",       limit: 4
+    t.string   "keyword",            limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "attch_file_name",    limit: 255
+    t.string   "attch_content_type", limit: 255
+    t.integer  "attch_file_size",    limit: 4
+    t.datetime "attch_updated_at"
   end
 
   create_table "zhengzhaoexpands", force: :cascade do |t|
@@ -345,6 +375,7 @@ ActiveRecord::Schema.define(version: 20160406035625) do
     t.string   "jianjiecompany_content_type",       limit: 255
     t.integer  "jianjiecompany_file_size",          limit: 4
     t.datetime "jianjiecompany_updated_at"
+    t.integer  "isnew",                             limit: 4
   end
 
   create_table "zhichengs", force: :cascade do |t|

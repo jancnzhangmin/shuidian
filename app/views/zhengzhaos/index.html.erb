@@ -20,7 +20,8 @@
         <% @zhengzhaos.each do |zhengzhao| %>
             <tr>
               <td>
-                <%= zhengzhao.namecompany %>
+
+                <%= link_to zhengzhao.namecompany,zhengzhao_path(zhengzhao) %>
               </td>
               <td>
                 <%= link_to "", edit_zhengzhao_path(zhengzhao),class: "fa fa-pencil" %>&nbsp;

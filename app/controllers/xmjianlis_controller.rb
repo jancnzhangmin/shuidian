@@ -57,7 +57,7 @@ class XmjianlisController < ApplicationController
   def update
     respond_to do |format|
       if @xmjianli.update(xmjianli_params)
-        format.html { redirect_to @xmjianli, notice: 'Test was successfully updated.' }
+        format.html { redirect_to edit_xmjianli_path(@xmjianli), notice: 'Test was successfully updated.' }
         format.json { render :show, status: :ok, location: @xmjianli }
       else
         format.html { render :edit }

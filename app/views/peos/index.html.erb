@@ -397,13 +397,15 @@
               </td>
 
               <td>
-                <%= peo.worktime.to_date %>
+
+                <%= link_to peo.worktime.strftime('%Y-%m-%d').to_s,peo_path(peo) %>
               </td>
 
               <td>
                 <% @xuelis.each do |xueli| %>
                     <%if peo.xueli_id == xueli.id %>
-                        <%= xueli.xueli %>
+
+                        <%= link_to xueli.xueli,peo_path(peo) %>
                         <% break %>
                     <% end %>
                 <% end %>
@@ -412,7 +414,8 @@
               <td>
                 <% @zhuangyes.each do |zhuangye| %>
                     <%if peo.zhuangye_id == zhuangye.id %>
-                        <%= zhuangye.zhuangye %>
+
+                        <%= link_to zhuangye.zhuangye,peo_path(peo) %>
                         <% break %>
                     <% end %>
                 <% end %>
@@ -423,7 +426,8 @@
               <td>
                 <% @zhichengs.each do |zhicheng| %>
                     <%if peo.zhicheng_id == zhicheng.id %>
-                        <%= zhicheng.zhicheng %>
+
+                        <%= link_to zhicheng.zhicheng,peo_path(peo) %>
                         <% break %>
                     <% end %>
                 <% end %>
@@ -432,7 +436,8 @@
               <td>
                 <% @zczs.each do |zcz| %>
                     <%if peo.zcz_id == zcz.id %>
-                        <%= zcz.zcz %>
+
+                        <%= link_to zcz.zcz,peo_path(peo) %>
                         <% break %>
                     <% end %>
                 <% end %>

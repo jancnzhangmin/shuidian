@@ -1,0 +1,41 @@
+<script>
+    $(document).ready(function () {
+        $('.file-box').each(function () {
+            animationHover(this, 'pulse');
+        });
+    });
+</script>
+<div class="ibox-content form-horizontal m-t">
+  <h3>&nbsp;&nbsp;&nbsp;&nbsp;简历</h3>
+
+
+  <% @peo.peoatts.each do |f| %>
+      <% if f.keyword.to_s == "jl" %>
+
+          <div class="file-box">
+            <div class="file">
+              <a href=<%= f.attch.url %>>
+
+                <span class="corner" ></span>
+                <div class="image" align= "center">
+                  <% if f.attch_content_type[0,5]=="image"%>
+                      <%= image_tag(f.attch.url,width: "300px",title:f.attch_file_name) %>
+                  <%else%>
+                      <%= image_tag("attch.png",width:"100px",title:f.attch_file_name) %>
+                  <%end%>
+                </div>
+
+
+              </a>
+            </div>
+          </div>
+      <% end %>
+
+  <% end %>
+
+
+  <div class="form-group">
+
+  </div>
+
+</div>

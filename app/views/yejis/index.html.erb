@@ -39,7 +39,7 @@
             var xmid=$(this).val();
             var hetongid=getUrlParam('hetong_id');
             var guojiaid=getUrlParam('guojia_id');
-            var ssdw=decodeURI(getUrlParam('ssdw'));
+            var ssdwid=getUrlParam('ssdw_id');
             var fromtime=getUrlParam('fromtime');
             var endtime=getUrlParam('endtime');
             var rmb=$('#rmb').maskMoney('unmasked')[0];
@@ -56,9 +56,9 @@
             {
                 guojiaid=0;
             }
-            if(ssdw==null)
+            if(ssdwid==null)
             {
-                ssdw="";
+                ssdwid=0;
             }
             if(fromtime==null)
             {
@@ -76,7 +76,7 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw="+ssdw+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
         });
 
         $('.xm').each(function(){
@@ -116,7 +116,7 @@
             var xmid=getUrlParam('xm_id');
             var hetongid=$(this).val();
             var guojiaid=getUrlParam('guojia_id');
-            var ssdw=decodeURI(getUrlParam('ssdw'));
+            var ssdwid=getUrlParam('ssdw_id');
             var fromtime=getUrlParam('fromtime');
             var endtime=getUrlParam('endtime');
             var rmb=$('#rmb').maskMoney('unmasked')[0];
@@ -133,9 +133,9 @@
             {
                 guojiaid=0;
             }
-            if(ssdw==null)
+            if(ssdwid==null)
             {
-                ssdw="";
+                ssdwid=0;
             }
             if(fromtime==null)
             {
@@ -153,7 +153,7 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw="+ssdw+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
         });
 
         $('.hetong').each(function(){
@@ -178,23 +178,23 @@
         }
 
 
-        //////////////////////////////////////国家
-        var guojia_id = getUrlParam('guojia_id');
+        //////////////////////////////////////实施单位
+        var ssdw_id = getUrlParam('ssdw_id');
 
-        $('.guojia').removeClass('btn-success');
-        $('.guojia').addClass('btn-white');
+        $('.ssdw').removeClass('btn-success');
+        $('.ssdw').addClass('btn-white');
 
-        $('.guojia').click( function() {
-            $('.guojia').removeClass('btn-success');
-            $('.guojia').addClass('btn-white');
+        $('.ssdw').click( function() {
+            $('.ssdw').removeClass('btn-success');
+            $('.ssdw').addClass('btn-white');
             $(this).addClass('btn-success');
             $(this).removeClass('btn-white');
-            $('#guojia_id').val($(this).val());
+            $('#ssdw_id').val($(this).val());
 
             var xmid=getUrlParam('xm_id');
+            var ssdwid=$(this).val();
+            var guojiaid=getUrlParam('guojia_id');
             var hetongid=getUrlParam('hetong_id');
-            var guojiaid=$(this).val();
-            var ssdw=decodeURI(getUrlParam('ssdw'));
             var fromtime=getUrlParam('fromtime');
             var endtime=getUrlParam('endtime');
             var rmb=$('#rmb').maskMoney('unmasked')[0];
@@ -211,9 +211,9 @@
             {
                 guojiaid=0;
             }
-            if(ssdw==null)
+            if(ssdwid==null)
             {
-                ssdw="";
+                ssdwid=0;
             }
             if(fromtime==null)
             {
@@ -231,7 +231,84 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw="+ssdw+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+        });
+
+        $('.ssdw').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == ssdw_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(ssdw_id==null) {
+            $('.ssdw').each(function () {
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+        //////////////////////////////////////国家
+        var guojia_id = getUrlParam('guojia_id');
+
+        $('.guojia').removeClass('btn-success');
+        $('.guojia').addClass('btn-white');
+
+        $('.guojia').click( function() {
+            $('.guojia').removeClass('btn-success');
+            $('.guojia').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#guojia_id').val($(this).val());
+
+            var xmid=getUrlParam('xm_id');
+            var hetongid=getUrlParam('hetong_id');
+            var guojiaid=$(this).val();
+            var ssdwid=getUrlParam('ssdw_id');
+            var fromtime=getUrlParam('fromtime');
+            var endtime=getUrlParam('endtime');
+            var rmb=$('#rmb').maskMoney('unmasked')[0];
+            var usd=$('#usd').maskMoney('unmasked')[0];
+            if(xmid==null)
+            {
+                xmid=0;
+            }
+            if(hetongid==null)
+            {
+                hetongid=0;
+            }
+            if(guojiaid==null)
+            {
+                guojiaid=0;
+            }
+            if(ssdwid==null)
+            {
+                ssdwid="";
+            }
+            if(fromtime==null)
+            {
+                fromtime="";
+            }
+            if(endtime==null)
+            {
+                endtime="";
+            }
+            if(rmb==null)
+            {
+                rmb="";
+            }
+            if(usd==null)
+            {
+                usd="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
         });
 
         $('.guojia').each(function(){
@@ -262,7 +339,7 @@
             var xmid=getUrlParam('xm_id');
             var hetongid=getUrlParam('hetong_id');
             var guojiaid=getUrlParam('guojia_id');
-            var ssdw=encodeURI($('#ssdw').val());
+            var ssdwid=getUrlParam('ssdw_id');
             var fromtime=$('#fromtime').val()
             var endtime=$('#endtime').val()
             var rmb=$('#rmb').maskMoney('unmasked')[0];
@@ -279,9 +356,9 @@
             {
                 guojiaid=0;
             }
-            if(ssdw==null)
+            if(ssdwid==null)
             {
-                ssdw="";
+                ssdwid=0;
             }
             if(fromtime==null)
             {
@@ -299,7 +376,7 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw="+ssdw+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
         });
 
 
@@ -307,10 +384,6 @@
 
 
 
-        if (decodeURI(getUrlParam('ssdw'))=='null')
-        {
-            $('#ssdw').val("");
-        }
 
         $('#fromtime').val(getUrlParam('fromtime'));
         if (getUrlParam('fromtime')=='null')
@@ -385,18 +458,18 @@
 </div>
 
 
-<div class="ibox-content" style="height: 240px;">
+<div class="ibox-content" style="height: 270px;">
   <table class="col-lg-12 table">
 
     <tr>
       <td class="col-sm-2">项目类型：</td>
       <td class="col-lg-11">
-      &nbsp;<button  class="xm btn btn-success btn-xs btn-w-s" style="margin-top: 3px;" value="0">全部</button>
+        &nbsp;<button  class="xm btn btn-success btn-xs btn-w-s" style="margin-top: 3px;" value="0">全部</button>
         <%@projecttypes.each do |f|%>
             &nbsp;<button class="xm btn btn-white btn-xs" value=<%= f.id %>><%= f.projecttype %></button>
         <%end%>
         <input type="hidden" id="xm_id" value="0">
-       </td>
+      </td>
     </tr>
 
     <tr>
@@ -419,33 +492,41 @@
         <input type="hidden" id="guojia_id" value="0">
       </td>
     </tr>
+
+    <tr>
+      <td class="col-sm-1">实施单位：</td>
+      <td class="col-lg-11">
+        &nbsp;<button  class="ssdw btn btn-success btn-xs btn-w-s" style="margin-top: 3px;" value="0">全部</button>
+        <%@ssdws.each do |f|%>
+            &nbsp;<button class="ssdw btn btn-white btn-xs" value=<%= f.id %>><%= f.name %></button>
+        <%end%>
+        <input type="hidden" id="ssdw_id" value="0">
+      </td>
+    </tr>
+
+
     <tr>
 
       <td class="col-lg-12" colspan="2">
         <table>
-          <td>
-        实施单位：
-</td>
-          <td>
-        <input class="input-sm form-control" type="text" id="ssdw" value=<%= @ssdw %>  >
-          </td>
-          </td>
-          <td>
-        &nbsp;&nbsp;工期：
-          </td>
-          <td>
-        <div class="form-group" id="data_5">
 
-          <div class="input-daterange input-group" id="datepicker" style="margin-top: 14px;">
-            <input type="text" class="input-sm form-control" name="start" id="fromtime"  />
-            <span class="input-group-addon">到</span>
-            <input type="text" class="input-sm form-control" name="end" id="endtime" />
-          </div>
-        </div>
+
+          <td>
+            &nbsp;&nbsp;工期：
           </td>
           <td>
-        &nbsp;&nbsp;合同金额：
-            </td>
+            <div class="form-group" id="data_5">
+
+              <div class="input-daterange input-group" id="datepicker" style="margin-top: 14px;">
+                <input type="text" class="input-sm form-control" name="start" id="fromtime"  />
+                <span class="input-group-addon">到</span>
+                <input type="text" class="input-sm form-control" name="end" id="endtime" />
+              </div>
+            </div>
+          </td>
+          <td>
+            &nbsp;&nbsp;合同金额：
+          </td>
           <td>
             <div class="input-group m-b" style="margin-top: 14px;"><span class="input-group-addon" >&yen;</span>
               <input style="width: 120px;" type="text" class="currency form-control" id="rmb">
@@ -464,7 +545,8 @@
     </tr>
 
   </table>
-  </div>
+
+</div>
 
 
 
@@ -475,121 +557,121 @@
 
 
 <div class="ibox-content">
-<% @projecttypes.each do |p| %>
+  <% @projecttypes.each do |p| %>
 
-<div class="row">
-  <div class="col-lg-12">
-    <div class="ibox float-e-margins border-bottom">
-      <div class="ibox-title">
-        <h5><%= p.projecttype %> </h5>
-        <div class="ibox-tools">
-          <a class="collapse-link">
-            <i class="fa fa-chevron-down"></i>
-          </a>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox float-e-margins border-bottom">
+            <div class="ibox-title">
+              <h5><%= p.projecttype %> </h5>
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-down"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content" style="display: none;">
+
+              <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                  <th>项目名称</th>
+                  <th>工期（年）</th>
+                  <th>合同金额</th>
+                  <th>合同类型</th>
+                  <th>国家</th>
+                  <th>实施单位</th>
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @yejis.each do |yeji| %>
+                    <% if yeji.projecttype_id == p.id %>
+                        <tr>
+
+                          <td>
+                            <% @yejiatts.each do |f| %>
+                                <% if f.yeji_id.to_s == yeji.id.to_s && f.keyword =='xmmc' %>
+
+                                    <%= link_to f.content,yeji_path(yeji) %>
+                                    <% break %>
+                                <% end %>
+                            <% end %>
+
+                            <% @yejiatts.each do |f| %>
+                                <% if f.yeji_id.to_s == yeji.id.to_s && f.keyword =='xmmc' %>
+
+
+                                    <% @languages.each do |l| %>
+
+                                        <% if f.langguage_id == l.id %>
+
+                                            <%= image_tag(l.flag.url,width: '30px') %>
+                                        <% end %>
+
+                                    <% end %>
+
+
+
+                                <% end %>
+                            <% end %>
+
+
+                          </td>
+
+                          <td>
+                            <%= yeji.gongqi %>
+                          </td>
+
+                          <td>
+                            <%= yeji.hetonge %>
+                          </td>
+
+
+                          <td>
+                            <% @hetongs.each do |f| %>
+                                <% if f.id.to_s == yeji.hetong_id.to_s %>
+                                    <%= f.hetong %>
+                                    <% break %>
+                                <% end %>
+                            <% end %>
+                          </td>
+
+                          <td>
+                            <% @guojias.each do |f| %>
+                                <% if f.id.to_s == yeji.guojia_id.to_s %>
+                                    <%= f.guojia %>
+                                    <% break %>
+                                <% end %>
+                            <% end %>
+                          </td>
+
+                          <td>
+                            <%= yeji.shishidanwei %>
+                          </td>
+
+                          <td>
+                            <%= link_to "", edit_yeji_path(yeji),class: "fa fa-pencil" %>&nbsp;
+                            <%= link_to '', yeji, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
+                          </td>
+                        </tr>
+                    <% end %>
+                <% end %>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
         </div>
       </div>
-      <div class="ibox-content" style="display: none;">
-
-        <table class="table table-hover table-bordered">
-          <thead>
-          <tr>
-            <th>项目名称</th>
-            <th>工期（年）</th>
-            <th>合同金额</th>
-            <th>合同类型</th>
-            <th>国家</th>
-            <th>实施单位</th>
-            <th>操作</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @yejis.each do |yeji| %>
-          <% if yeji.projecttype_id == p.id %>
-              <tr>
-
-                <td>
-                  <% @yejiatts.each do |f| %>
-                      <% if f.yeji_id.to_s == yeji.id.to_s && f.keyword =='xmmc' %>
-
-                          <%= link_to f.content,yeji_path(yeji) %>
-                          <% break %>
-                      <% end %>
-                  <% end %>
-
-                  <% @yejiatts.each do |f| %>
-                      <% if f.yeji_id.to_s == yeji.id.to_s && f.keyword =='xmmc' %>
 
 
-                          <% @languages.each do |l| %>
-
-                              <% if f.langguage_id == l.id %>
-
-                                  <%= image_tag(l.flag.url,width: '30px') %>
-                              <% end %>
-
-                          <% end %>
+  <% end %>
 
 
+  <div >
+    <%= link_to "新增", new_yeji_path,class: "btn btn-w-m btn-success mylink pull-right" %>
+    <br>
 
-                      <% end %>
-                  <% end %>
-
-
-                </td>
-
-                <td>
-                  <%= yeji.gongqi %>
-                </td>
-
-                <td>
-                  <%= yeji.hetonge %>
-                </td>
-
-
-                <td>
-                  <% @hetongs.each do |f| %>
-                      <% if f.id.to_s == yeji.hetong_id.to_s %>
-                          <%= f.hetong %>
-                          <% break %>
-                      <% end %>
-                  <% end %>
-                </td>
-
-                <td>
-                  <% @guojias.each do |f| %>
-                      <% if f.id.to_s == yeji.guojia_id.to_s %>
-                          <%= f.guojia %>
-                          <% break %>
-                      <% end %>
-                  <% end %>
-                </td>
-
-                <td>
-                  <%= yeji.shishidanwei %>
-                </td>
-
-                <td>
-                  <%= link_to "", edit_yeji_path(yeji),class: "fa fa-pencil" %>&nbsp;
-                  <%= link_to '', yeji, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
-                </td>
-              </tr>
-          <% end %>
-          <% end %>
-          </tbody>
-        </table>
-
-      </div>
-    </div>
   </div>
-</div>
-
-
-<% end %>
-
-
-<div >
-  <%= link_to "新增", new_yeji_path,class: "btn btn-w-m btn-success mylink pull-right" %>
-<br>
-
-</div>
 </div>

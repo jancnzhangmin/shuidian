@@ -66,6 +66,7 @@
         <label class="col-sm-3 control-label">姓名：</label>
         <div class="col-sm-5">
           <%= f.text_field :name ,class:"form-control"%>
+          <%= f.hidden_field :isnew,value:'0' %>
         </div>
       </div>
 
@@ -144,47 +145,11 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">毕业学校：</label>
-        <div class="col-sm-2">
-          <%= f.file_field :schoolgra ,class:"form-control",onchange: "readURL(this,'img1')"%>
-        </div>
-        <div class="col-sm-5">
-          <%if !@peo.schoolgra %>
-              <img class="img1" width="200px" src=<%= @peo.schoolgra.url%> />
-          <% else %>
-              <img class="img1" src=<%=image_path('webuploader.png')%> />
-          <%end%>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">学历证：</label>
-        <div class="col-sm-2">
-          <%= f.file_field :xuelicertification ,class:"form-control",onchange: "readURL(this,'img2')"%>
-        </div>
-        <div class="col-sm-5">
-          <%if !@peo.xuelicertification %>
-              <img class="img2" width="200px" src=<%= @peo.xuelicertification.url%> />
-          <% else %>
-              <img class="img2" src=<%=image_path('webuploader.png')%> />
-          <%end%>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">职称证：</label>
-        <div class="col-sm-2">
-          <%= f.file_field :zhichencertification ,class:"form-control",onchange: "readURL(this,'img3')"%>
-        </div>
-        <div class="col-sm-5">
-          <%if !@peo.zhichencertification %>
-              <img class="img3" width="200px" src=<%= @peo.zhichencertification.url%> />
-          <% else %>
-              <img class="img3" src=<%=image_path('webuploader.png')%> />
-          <%end%>
-        </div>
-      </div>
+
+
+
 
       <div class="form-group">
         <label class="col-sm-3 control-label">职称证专业：</label>
@@ -198,75 +163,15 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">资格证：</label>
-        <div class="col-sm-2">
-          <%= f.file_field :zigecertification ,class:"form-control",onchange: "readURL(this,'img4')"%>
-        </div>
-        <div class="col-sm-5">
-          <%if !@peo.zigecertification %>
-              <img class="img4" width="200px" src=<%= @peo.zigecertification.url%> />
-          <% else %>
-              <img class="img4" src=<%=image_path('webuploader.png')%> />
-          <%end%>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">身份证：</label>
-        <div class="col-sm-2">
-          <%= f.file_field :shenfencertification ,class:"form-control",onchange: "readURL(this,'img5')"%>
-        </div>
-        <div class="col-sm-5">
-          <%if !@peo.shenfencertification %>
-              <img class="img5" width="200px" src=<%= @peo.shenfencertification.url%> />
-          <% else %>
-              <img class="img5" src=<%=image_path('webuploader.png')%> />
-          <%end%>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">安全证：</label>
-        <div class="col-sm-2">
-          <%= f.file_field :anquancertification ,class:"form-control",onchange: "readURL(this,'img6')"%>
-        </div>
-        <div class="col-sm-5">
-          <%if !@peo.anquancertification %>
-              <img class="img6" width="200px" src=<%= @peo.anquancertification.url%> />
-          <% else %>
-              <img class="img6" src=<%=image_path('webuploader.png')%> />
-          <%end%>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">公证材料：</label>
-        <div class="col-sm-2">
-          <%= f.file_field :gongzhenmaterial ,class:"form-control",onchange: "readURL(this,'img7')"%>
-        </div>
-        <div class="col-sm-5">
-          <%if !@peo.gongzhenmaterial %>
-              <img class="img7" width="200px" src=<%= @peo.gongzhenmaterial.url%> />
-          <% else %>
-              <img class="img7" src=<%=image_path('webuploader.png')%> />
-          <%end%>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">其它：</label>
-        <div class="col-sm-2">
-          <%= f.file_field :other ,class:"form-control",onchange: "readURL(this,'img8')"%>
-        </div>
-        <div class="col-sm-5">
-          <%if !@peo.other %>
-              <img class="img8" width="200px" src=<%= @peo.other.url%> />
-          <% else %>
-              <img class="img8" src=<%=image_path('webuploader.png')%> />
-          <%end%>
-        </div>
-      </div>
+
+
+
+
+
 
 
 

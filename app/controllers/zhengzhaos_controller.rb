@@ -3,6 +3,10 @@ class ZhengzhaosController < ApplicationController
   before_action :set_zhengzhao, only: [:show, :edit, :update, :destroy]
   def index
     @zhengzhaos=Zhengzhao.all
+    zhengzhaodel = Zhengzhao.find_by(isnew:'1')
+    if zhengzhaodel
+      zhengzhaodel.destroy
+    end
   end
 
 
@@ -23,6 +27,8 @@ class ZhengzhaosController < ApplicationController
   # GET /tests/new
   def new
     @zhengzhao = Zhengzhao.new
+    zhengzhao = Zhengzhao.create(isnew:'1')
+    redirect_to edit_zhengzhao_path(zhengzhao)
   end
 
   # GET /tests/1/edit
@@ -87,7 +93,7 @@ class ZhengzhaosController < ApplicationController
   def update
     respond_to do |format|
       if @zhengzhao.update(zhengzhao_params)
-        format.html { redirect_to @zhengzhao, notice: 'Test was successfully updated.' }
+        format.html { redirect_to edit_zhengzhao_path(@zhengzhao), notice: 'Test was successfully updated.' }
         format.json { render :show, status: :ok, location: @zhengzhao }
       else
         format.html { render :edit }
@@ -118,7 +124,7 @@ class ZhengzhaosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def zhengzhao_params
-    params.require(:zhengzhao).permit(:namecompany, :jianjiecompany, :another, :zizhicertification, :anquancertification, :chenbaocertification, :zhanchen, :santixicertification, :shuiwucertification, :dengjicertification, :cwbaobiao, :orgcertification, :wsszhenming,:wpczhenming, :licence)
+    params.require(:zhengzhao).permit(:namecompany, :jianjiecompany, :another, :zizhicertification, :anquancertification, :chenbaocertification, :zhanchen, :santixicertification, :shuiwucertification, :dengjicertification, :cwbaobiao, :orgcertification, :wsszhenming,:wpczhenming, :licence, :isnew)
   end
 
 

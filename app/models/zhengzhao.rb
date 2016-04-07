@@ -1,6 +1,7 @@
 class Zhengzhao < ActiveRecord::Base
   has_many :huojiangzhenshus, dependent: :destroy
   has_many :zhengzhaoexpands,dependent: :destroy
+  has_many :zhengzhaoatts,dependent: :destroy
   has_attached_file :jianjiecompany, :url => "/:attachment/:id/:basename.:extension",  :path => ":rails_root/public/:attachment/:id/:basename.:extension"
   do_not_validate_attachment_file_type :jianjiecompany
   has_attached_file :zizhicertification, :url => "/:attachment/:id/:basename.:extension",  :path => ":rails_root/public/:attachment/:id/:basename.:extension"

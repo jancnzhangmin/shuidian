@@ -4,6 +4,11 @@ class PeosController < ApplicationController
   before_action :set_peo, only: [:show, :edit, :update, :destroy]
   def index
 
+    peodel = Peo.find_by(isnew:'1')
+    if peodel
+      peodel.destroy
+    end
+
     @peos=Peo.all
     @zhuangyes=Zhuangye.all
     @xuelis=Xueli.all
@@ -62,6 +67,8 @@ end
     @xuelis=Xueli.all
     @zhichengs=Zhicheng.all
     @zczs=Zcz.all
+    peo = Peo.create(isnew:'1')
+    redirect_to edit_peo_path(peo)
   end
 
   # GET /tests/1/edit
@@ -114,7 +121,7 @@ end
   def update
     respond_to do |format|
       if @peo.update(peo_params)
-        format.html { redirect_to @peo, notice: 'Test was successfully updated.' }
+        format.html { redirect_to edit_peo_path(@peo), notice: 'Test was successfully updated.' }
         format.json { render :show, status: :ok, location: @peo }
       else
         format.html { render :edit }
@@ -145,7 +152,7 @@ end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def peo_params
-    params.require(:peo).permit(:zhuangye_id, :zcz_id, :xueli_id, :zhicheng_id, :name, :sex, :birthday, :worktime, :school, :other, :schoolgra, :xuelicertification, :zhichencertification, :zigecertification,:shenfencertification, :anquancertification, :gongzhenmaterial)
+    params.require(:peo).permit(:zhuangye_id, :zcz_id, :xueli_id, :zhicheng_id, :name, :sex, :birthday, :worktime, :school, :other, :schoolgra, :xuelicertification, :zhichencertification, :zigecertification,:shenfencertification, :anquancertification, :gongzhenmaterial, :isnew)
   end
 
 end

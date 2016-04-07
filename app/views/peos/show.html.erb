@@ -7,14 +7,14 @@
 
   <div class="form-group">
     <label class="col-sm-3 control-label">姓名：</label>
-    <div class="col-sm-5">
+    <div class="col-sm-5" style="margin-top: 6px;">
       <%= @peo.name %>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-3 control-label">性别：</label>
-    <div class="col-sm-5">
+    <div class="col-sm-5" style="margin-top: 6px;">
       <% if @peo.sex == 0 %>
       男
           <% else %>
@@ -25,168 +25,69 @@
 
   <div class="form-group">
     <label class="col-sm-3 control-label">生日：</label>
-    <div class="col-sm-5">
+    <div class="col-sm-5" style="margin-top: 6px;">
       <%= @peo.birthday.to_date %>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-3 control-label">工作时间：</label>
-    <div class="col-sm-5">
+    <div class="col-sm-5" style="margin-top: 6px;">
       <%= @peo.worktime.to_date %>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-3 control-label">专业：</label>
-    <div class="col-sm-5">
+    <div class="col-sm-5" style="margin-top: 6px;">
       <%= @zhuangye.zhuangye %>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-3 control-label">学历：</label>
-    <div class="col-sm-5">
+    <div class="col-sm-5" style="margin-top: 6px;">
       <%= @xueli.xueli %>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-3 control-label">学校：</label>
-    <div class="col-sm-5">
+    <div class="col-sm-5" style="margin-top: 6px;">
       <%= @peo.school %>
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="col-sm-3 control-label">毕业学校：</label>
-    <div class="col-sm-5">
-      <%if @peo.schoolgra_content_type.to_s.length>4 && @peo.schoolgra_content_type[0,5]!="image" %>
-          <a href=<%= @peo.schoolgra.url %>>
-            <img class="img1" width="30px" src=<%=image_path('attch.png')%> />
-          </a>
-      <%else%>
-          <% if @peo.schoolgra_content_type.to_s != "" %>
-              <img class="img1" width="630px" src=<%= @peo.schoolgra.url%> />
-          <% end %>
-      <%end%>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-sm-3 control-label">学历证：</label>
-    <div class="col-sm-5">
-      <%if @peo.xuelicertification_content_type.to_s.length>4 && @peo.xuelicertification_content_type[0,5]!="image" %>
-          <a href=<%= @peo.xuelicertification.url %>>
-            <img class="img1" width="30px" src=<%=image_path('attch.png')%> />
-          </a>
-      <%else%>
-          <% if @peo.xuelicertification_content_type.to_s != "" %>
-              <img class="img1" width="630px" src=<%= @peo.xuelicertification.url%> />
-          <% end %>
-      <%end%>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-sm-3 control-label">职称证：</label>
-    <div class="col-sm-5">
-      <%if @peo.zhichencertification_content_type.to_s.length>4 && @peo.zhichencertification_content_type[0,5]!="image" %>
-          <a href=<%= @peo.zhichencertification.url %>>
-            <img class="img1" width="30px" src=<%=image_path('attch.png')%> />
-          </a>
-      <%else%>
-          <% if @peo.zhichencertification_content_type.to_s != "" %>
-              <img class="img1" width="630px" src=<%= @peo.zhichencertification.url%> />
-          <% end %>
-      <%end%>
-    </div>
-  </div>
+
+
+
 
 
   <div class="form-group">
     <label class="col-sm-3 control-label">职称证专业：</label>
-    <div class="col-sm-5">
+    <div class="col-sm-5" style="margin-top: 6px;">
       <%= @zcz.zcz %>
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="col-sm-3 control-label">资格证：</label>
-    <div class="col-sm-5">
-      <%if @peo.zigecertification_content_type.to_s.length>4 && @peo.zigecertification_content_type[0,5]!="image" %>
-          <a href=<%= @peo.zigecertification.url %>>
-            <img class="img1" width="30px" src=<%=image_path('attch.png')%> />
-          </a>
-      <%else%>
-          <% if @peo.zigecertification_content_type.to_s != "" %>
-              <img class="img1" width="630px" src=<%= @peo.zigecertification.url%> />
-          <% end %>
-      <%end%>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-sm-3 control-label">身份证：</label>
-    <div class="col-sm-5">
-      <%if @peo.shenfencertification_content_type.to_s.length>4 && @peo.shenfencertification_content_type[0,5]!="image" %>
-          <a href=<%= @peo.shenfencertification.url %>>
-            <img class="img1" width="30px" src=<%=image_path('attch.png')%> />
-          </a>
-      <%else%>
-          <% if @peo.shenfencertification_content_type.to_s != "" %>
-              <img class="img1" width="630px" src=<%= @peo.shenfencertification.url%> />
-          <% end %>
-      <%end%>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-sm-3 control-label">安全证：</label>
-    <div class="col-sm-5">
-      <%if @peo.anquancertification_content_type.to_s.length>4 && @peo.anquancertification_content_type[0,5]!="image" %>
-          <a href=<%= @peo.anquancertification.url %>>
-            <img class="img1" width="30px" src=<%=image_path('attch.png')%> />
-          </a>
-      <%else%>
-          <% if @peo.anquancertification_content_type.to_s != "" %>
-              <img class="img1" width="630px" src=<%= @peo.anquancertification.url%> />
-          <% end %>
-      <%end%>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-sm-3 control-label">公证材料：</label>
-    <div class="col-sm-5">
-      <%if @peo.gongzhenmaterial_content_type.to_s.length>4 && @peo.gongzhenmaterial_content_type[0,5]!="image" %>
-          <a href=<%= @peo.gongzhenmaterial.url %>>
-            <img class="img1" width="30px" src=<%=image_path('attch.png')%> />
-          </a>
-      <%else%>
-          <% if @peo.gongzhenmaterial_content_type.to_s != "" %>
-              <img class="img1" width="630px" src=<%= @peo.gongzhenmaterial.url%> />
-          <% end %>
-      <%end%>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-sm-3 control-label">其它：</label>
-    <div class="col-sm-5">
-      <%if @peo.other_content_type.to_s.length>4 && @peo.other_content_type[0,5]!="image" %>
-          <a href=<%= @peo.other.url %>>
-            <img class="img1" width="30px" src=<%=image_path('attch.png')%> />
-          </a>
-      <%else%>
-          <% if @peo.other_content_type.to_s != "" %>
-              <img class="img1" width="630px" src=<%= @peo.other.url%> />
-          <% end %>
-      <%end%>
-    </div>
-  </div>
 
 </div>
 
-<%= render 'jianlis/form' %>
+<%= render 'peoatts/showbyxx' %>
+<%= render 'peoatts/showjl' %>
+<%= render 'peoatts/showxlz' %>
+<%= render 'peoatts/showzcz' %>
+<%= render 'peoatts/showzgz' %>
+<%= render 'peoatts/showsfz' %>
+<%= render 'peoatts/showaqz' %>
+<%= render 'peoatts/showggcl' %>
+<%= render 'peoatts/showqt' %>
+<br>
+
+
 

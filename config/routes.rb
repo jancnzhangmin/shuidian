@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :zhengzhaos do
     resources :huojiangzhenshus
     resources :zhengzhaoexpands
+    resources :zhengzhaoatts
   end
   resources :yejis do
     resources :expands
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   resources :projecttypes
   resources :peos do
     resources :jianlis
+    resources :peoatts
   end
   resources :zhuangyes
   resources :xuelis
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
   end
   resources :xmlanguages
   resources :xmcouns
+  resources :ssdws
 
 
   root 'logins#new'

@@ -4,6 +4,7 @@ class Peo < ActiveRecord::Base
   belongs_to :zhicheng
   belongs_to :zcz
   has_many :jianlis
+  has_many :peoatts,dependent: :destroy
 
   has_attached_file :schoolgra, :url => "/:attachment/:id/:basename.:extension",  :path => ":rails_root/public/:attachment/:id/:basename.:extension"
   do_not_validate_attachment_file_type :schoolgra
