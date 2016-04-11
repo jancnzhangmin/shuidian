@@ -17,6 +17,9 @@ class XmjianlisController < ApplicationController
 
 
     @xm=params[:xm]
+    if !@xm
+      @xm=''
+    end
 
 
     myselect = 'select * from xmjianlis where name like '+'"%'+ @xm +'%"'

@@ -525,7 +525,7 @@
     </tr>
 
     <tr>
-      <td class="col-sm-1">实施单位：</td>
+      <td class="col-sm-1">实施名义：</td>
       <td class="col-lg-11">
         &nbsp;<button  class="ssdw btn btn-success btn-xs btn-w-s" style="margin-top: 3px;" value="0">全部</button>
         <%@ssdws.each do |f|%>
@@ -613,7 +613,8 @@
                 <thead>
                 <tr>
                   <th>项目名称</th>
-                  <th>工期（月）</th>
+                  <th>开工时间</th>
+                  <th>完工时间</th>
                   <th>合同金额</th>
                   <th>合同类型</th>
                   <th>国家</th>
@@ -657,7 +658,19 @@
                           </td>
 
                           <td>
-                            <%= yeji.gongqi %>
+                            <% if yeji.begindate %>
+                            <%= yeji.begindate.strftime('%Y-%m-%d').to_s %>
+                                <% else %>
+                            &nbsp;
+                                <% end %>
+                          </td>
+
+                          <td>
+                            <% if yeji.enddate %>
+                            <%= yeji.enddate.strftime('%Y-%m-%d').to_s %>
+                                <% else %>
+                            &nbsp;
+                                <% end %>
                           </td>
 
                           <td>
