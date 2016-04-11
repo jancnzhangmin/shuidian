@@ -3,6 +3,15 @@
         $('.file-box').each(function () {
             animationHover(this, 'pulse');
         });
+        $('#swdjz_submit').click(function(){
+            if($('#swdjz_att').val()=='')
+            {
+                $('#swdjz_alert_lab').html('税务登记证不能为空！');
+                $('#swdjz_alert').show();
+
+                return false;
+            }
+        });
     });
 </script>
 <div class="ibox-content form-horizontal m-t">
@@ -37,13 +46,16 @@
 <%= form_for([@zhengzhao,@zhengzhao.zhengzhaoexpands.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
     <div class="form-group">
       <div class="col-sm-3">
-        <%= f.file_field :expand ,class:"form-control"%>
+        <%= f.file_field :expand ,class:"form-control",id:'swdjz_att'%>
         <%= f.hidden_field :keyword, value:"swdjz"%>
         <%= f.hidden_field :zhengzhao_id,value: @zhengzhao.id %>
       </div>
       <div>
-
-        <button class="btn btn-w-m btn-success mylink" type="submit">上传税务登记证</button>
+        <button class="btn btn-w-m btn-success mylink pull-left" type="submit" id="swdjz_submit">上传税务登记证</button>
+        <i class="pull-left">&nbsp;</i>
+        <div id="swdjz_alert" class="alert alert-danger text-center col-sm-2 " style="display: none;padding-top: 8px;padding-bottom: 0px;">
+          <label id="swdjz_alert_lab"></label></a>
+        </div>
       </div>
     </div>
 <% end %>

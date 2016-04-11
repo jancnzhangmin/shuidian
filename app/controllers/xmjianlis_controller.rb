@@ -14,6 +14,23 @@ class XmjianlisController < ApplicationController
     @xmjianlis = Xmjianli.all
     @languages = Xmlanguage.all
     @couns = Xmcoun.all
+
+
+    @xm=params[:xm]
+
+
+    myselect = 'select * from xmjianlis where name like '+'"%'+ @xm +'%"'
+
+    if params[:coun_id] && params[:coun_id] > '0'
+      myselect = myselect + ' and xmcoun_id = '+ params[:coun_id]
+    end
+
+    if params[:language_id] && params[:language_id] > '0'
+      myselect = myselect + ' and xmlanguage_id = '+ params[:language_id]
+    end
+
+    @xmjianlis=Xmjianli.find_by_sql(myselect)
+
   end
 
   # GET /tests/1

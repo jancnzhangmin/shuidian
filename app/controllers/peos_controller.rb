@@ -38,7 +38,12 @@ end
       myselect=myselect+" and zcz_id ="+params[:zczzy_id]
     end
 
+    if params[:worktime] != nil
+      myselect=myselect+" and worktime >="+'"' + params[:worktime] +'"'
+    end
+
     @peos=Peo.find_by_sql(myselect)
+
 
   end
 

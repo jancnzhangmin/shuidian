@@ -3,6 +3,15 @@
         $('.file-box').each(function () {
             animationHover(this, 'pulse');
         });
+        $('#jl_submit').click(function(){
+            if($('#jl_att').val()=='')
+            {
+                $('#jl_alert_lab').html('简历不能为空！');
+                $('#jl_alert').show();
+
+                return false;
+            }
+        });
     });
 </script>
 <div class="ibox-content form-horizontal m-t">
@@ -39,13 +48,16 @@
   <%= form_for([@peo,@peo.peoatts.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
       <div class="form-group">
         <div class="col-sm-3">
-          <%= f.file_field :attch ,class:"form-control"%>
+          <%= f.file_field :attch ,class:"form-control",id:'jl_att'%>
           <%= f.hidden_field :keyword, value:"jl"%>
           <%= f.hidden_field :peo_id,value: @peo.id %>
         </div>
         <div>
-
-          <button class="btn btn-w-m btn-success mylink" type="submit">上传简历</button>
+          <button class="btn btn-w-m btn-success mylink pull-left" type="submit" id="jl_submit">上传简历</button>
+          <i class="pull-left">&nbsp;</i>
+          <div id="jl_alert" class="alert alert-danger text-center col-sm-2 " style="display: none;padding-top: 8px;padding-bottom: 0px;">
+            <label id="jl_alert_lab"></label></a>
+          </div>
         </div>
       </div>
   <% end %>

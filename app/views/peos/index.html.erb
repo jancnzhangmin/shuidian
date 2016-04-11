@@ -11,6 +11,8 @@
         }
 
 
+
+
 //////////////////////////////////////专业部分
         var zhuanye_id = getUrlParam('zhuanye_id');
 
@@ -27,6 +29,7 @@
             var xueliid=getUrlParam('xueli_id');
             var zhichengid=getUrlParam('zhicheng_id');
             var zczzyid=getUrlParam('zczzy_id');
+            var worktime=$('#worktime').val();
             var name = encodeURI($('#zhuanye_name').val());
 
             if(xueliid==null)
@@ -45,7 +48,11 @@
             {
                 name="";
             }
-            location.href = "?zhuanye_id="+$('#zhuanye_id').val() + "&xueli_id=" + xueliid + "&zhicheng_id=" + zhichengid+"&zczzy_id="+zczzyid+"&name="+name;
+            if(worktime==null)
+            {
+                worktime="";
+            }
+            location.href = "?zhuanye_id="+$('#zhuanye_id').val() + "&xueli_id=" + xueliid + "&zhicheng_id=" + zhichengid+"&zczzy_id="+zczzyid+"&name="+name+"&worktime="+worktime;
         });
 
         $('.zhuanye').each(function(){
@@ -87,6 +94,7 @@
             var zhuanyeid=getUrlParam('zhuanye_id');
             var zhichengid=getUrlParam('zhicheng_id');
             var zczzyid=getUrlParam('zczzy_id');
+            var worktime=$('#worktime').val();
             var name = encodeURI($('#zhuanye_name').val());
 
             if(zhuanyeid==null)
@@ -105,7 +113,11 @@
             {
                 name="";
             }
-            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + $('#xueli_id').val() +"&zhicheng_id=" + zhichengid +"&zczzy_id="+zczzyid+"&name="+name;
+            if(worktime==null)
+            {
+                worktime="";
+            }
+            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + $('#xueli_id').val() +"&zhicheng_id=" + zhichengid +"&zczzy_id="+zczzyid+"&name="+name+"&worktime="+worktime;
         });
 
         $('.xueli').each(function(){
@@ -146,6 +158,7 @@
             var zhuanyeid=getUrlParam('zhuanye_id');
             var xueliid=getUrlParam('xueli_id');
             var zczzyid=getUrlParam('zczzy_id');
+            var worktime=$('#worktime').val();
             var name = encodeURI($('#zhuanye_name').val());
 
             if(zhuanyeid==null)
@@ -164,7 +177,11 @@
             {
                 name="";
             }
-            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +  $('#zhicheng_id').val()+"&zczzy_id=" + zczzyid+"&name=" + name;
+            if(worktime==null)
+            {
+                worktime="";
+            }
+            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +  $('#zhicheng_id').val()+"&zczzy_id=" + zczzyid+"&name=" + name+"&worktime="+worktime;
         });
 
         $('.zhicheng').each(function(){
@@ -205,6 +222,7 @@
             $('#zczzy_id').val($(this).val());
             var zhuanyeid=getUrlParam('zhuanye_id');
             var xueliid=getUrlParam('xueli_id');
+            var worktime=$('#worktime').val();
             var zhichengid=getUrlParam('zhicheng_id');
             var name = encodeURI($('#zhuanye_name').val());
 
@@ -224,7 +242,11 @@
             {
                 name="";
             }
-            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +zhichengid +"&zczzy_id=" +  $('#zczzy_id').val()+"&name="+name;
+            if(worktime==null)
+            {
+                worktime="";
+            }
+            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +zhichengid +"&zczzy_id=" +  $('#zczzy_id').val()+"&name="+name+"&worktime="+worktime;
         });
 
         $('.zczzy').each(function(){
@@ -266,6 +288,7 @@
             var xueliid=getUrlParam('xueli_id');
             var zhichengid=getUrlParam('zhicheng_id');
             var zczzyid=getUrlParam('zczzy_id');
+            var worktime=$('#worktime').val();
             if(zhuanyeid==null)
             {
                 zhuanyeid=0;
@@ -282,13 +305,25 @@
             {
                 zczzyid=0;
             }
+            if(worktime==null)
+            {
+                worktime=0;
+            }
             //var sname = encodeURI($('#zhuanye_name').val(),"UTF-8");
             var sname = encodeURI($('#zhuanye_name').val());
             //var sname = java.net.URLDecoder.decode($('#zhuanye_name').val(),"UTF-8")
-            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +zhichengid +"&zczzy_id=" +  zczzyid +"&name="+sname;
+            location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +zhichengid +"&zczzy_id=" +  zczzyid +"&name="+sname+"&worktime="+worktime;
             //$.post("peospeos");
 
 
+        });
+        $('#worktime').val(getUrlParam('worktime'));
+
+
+        $('#worktime').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
         });
 
 
@@ -306,10 +341,34 @@
       <table class="col-lg-12 table">
 
         <tr>
-          <td class="col-sm-1">姓名：</td>
-          <td class="col-lg-11">
-            <input class="from-control col-sm-5" type="text" id="zhuanye_name" value= <%= @zhuanye_name %> >&nbsp;<button class="query btn btn-success btn-xs btn-w-s" style="margin-top: 3px;">查询</button>
+          <td >
+
           </td>
+          <td>
+            <table class="col-sm-6">
+              <tr>
+                <td>
+                  姓名：
+                </td>
+                <td>
+                  <input class="from-control col-sm-12" type="text" id="zhuanye_name" value= <%= @zhuanye_name %> >
+                </td>
+
+                <td align="right">
+                  &nbsp;工作年限：
+                </td>
+                <td>
+                  <input class="from-control col-sm-12" type="text" id="worktime" >
+                </td>
+                <td >
+                  &nbsp;<button class="query btn btn-success btn-xs btn-w-s" style="margin-top: 3px;">查询</button>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+
+
         </tr>
 
         <tr>

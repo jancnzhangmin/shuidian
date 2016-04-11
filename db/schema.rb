@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406232308) do
+ActiveRecord::Schema.define(version: 20160410224548) do
 
   create_table "abcs", force: :cascade do |t|
     t.integer  "num",        limit: 4
@@ -280,6 +280,8 @@ ActiveRecord::Schema.define(version: 20160406232308) do
     t.float    "meiyuan",        limit: 24
     t.integer  "isnew",          limit: 4
     t.integer  "ssdw_id",        limit: 4
+    t.datetime "begindate"
+    t.datetime "enddate"
   end
 
   create_table "zczs", force: :cascade do |t|

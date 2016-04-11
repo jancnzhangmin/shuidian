@@ -28,7 +28,7 @@ end
     @ssdw=params[:ssdw]
 
 
-    myselect ='select * from yejis where shishidanwei like "%%" '
+    myselect ='select * from yejis where isnew = "0" '
 
     if params[:ssdw_id] && params[:ssdw_id] > '0'
       myselect = myselect + ' and ssdw_id = '+ params[:ssdw_id]
@@ -51,17 +51,20 @@ end
     if params[:usd] && params[:usd] > '0'
       myselect = myselect + ' and meiyuan >='+params[:usd]
     end
+    if params[:gongqi] && params[:gongqi] != ''
+      myselect = myselect + ' and gongqi >='+params[:gongqi]
+    end
 if (params[:fromtime]!=nil)
   fromyear= params[:fromtime][0,4]
   endyear=params[:endtime][0,4]
 
 if fromyear != "" && endyear != ""
-  myselect = myselect + ' and gongqi >= '+ fromyear.to_s + ' and gongqi <=' + endyear.to_s
+  myselect = myselect + ' and begindate >= '+ fromyear.to_s + ' and enddate <=' + endyear.to_s
 elsif fromyear && fromyear != ""
 
-  myselect = myselect + ' and gongqi >= '+ fromyear.to_s
+  myselect = myselect + ' and begindate >= '+ fromyear.to_s
 elsif  endyear && endyear != ""
-  myselect = myselect + ' and gongqi <= '+ endyear.to_s
+  myselect = myselect + ' and enddate <= '+ endyear.to_s
 
 end
 
@@ -176,7 +179,7 @@ end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def yeji_params
-    params.require(:yeji).permit(:ssdw_id, :hetong_id, :guojia_id, :projecttype_id, :juese_id, :nameproject, :gongqi, :hetonge, :nameyezhu, :addressyezhu,:telyezhu, :fukunprice, :shishidanwei, :meiyuan, :isnew)
+    params.require(:yeji).permit(:ssdw_id, :hetong_id, :guojia_id, :projecttype_id, :juese_id, :nameproject, :gongqi, :hetonge, :nameyezhu, :addressyezhu,:telyezhu, :fukunprice, :shishidanwei, :meiyuan, :isnew, :begindate, :enddate)
   end
 
 end

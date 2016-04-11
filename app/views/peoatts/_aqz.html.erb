@@ -3,6 +3,15 @@
         $('.file-box').each(function () {
             animationHover(this, 'pulse');
         });
+        $('#aqz_submit').click(function(){
+            if($('#aqz_att').val()=='')
+            {
+                $('#aqz_alert_lab').html('安全证不能为空！');
+                $('#aqz_alert').show();
+
+                return false;
+            }
+        });
     });
 </script>
 <div class="ibox-content form-horizontal m-t">
@@ -39,13 +48,16 @@
   <%= form_for([@peo,@peo.peoatts.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
       <div class="form-group">
         <div class="col-sm-3">
-          <%= f.file_field :attch ,class:"form-control"%>
+          <%= f.file_field :attch ,class:"form-control",id:'aqz_att'%>
           <%= f.hidden_field :keyword, value:"aqz"%>
           <%= f.hidden_field :peo_id,value: @peo.id %>
         </div>
         <div>
-
-          <button class="btn btn-w-m btn-success mylink" type="submit">上传安全证</button>
+          <button class="btn btn-w-m btn-success mylink pull-left" type="submit" id="aqz_submit">上传安全证</button>
+          <i class="pull-left">&nbsp;</i>
+          <div id="aqz_alert" class="alert alert-danger text-center col-sm-2 " style="display: none;padding-top: 8px;padding-bottom: 0px;">
+            <label id="aqz_alert_lab"></label></a>
+          </div>
         </div>
       </div>
   <% end %>

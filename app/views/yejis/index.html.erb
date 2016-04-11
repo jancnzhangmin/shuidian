@@ -40,6 +40,7 @@
             var hetongid=getUrlParam('hetong_id');
             var guojiaid=getUrlParam('guojia_id');
             var ssdwid=getUrlParam('ssdw_id');
+            var gongqi=getUrlParam('gongqi');
             var fromtime=getUrlParam('fromtime');
             var endtime=getUrlParam('endtime');
             var rmb=$('#rmb').maskMoney('unmasked')[0];
@@ -76,7 +77,11 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            if(gongqi==null)
+            {
+                gongqi="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
 
         $('.xm').each(function(){
@@ -117,6 +122,7 @@
             var hetongid=$(this).val();
             var guojiaid=getUrlParam('guojia_id');
             var ssdwid=getUrlParam('ssdw_id');
+            var gongqi=getUrlParam('gongqi');
             var fromtime=getUrlParam('fromtime');
             var endtime=getUrlParam('endtime');
             var rmb=$('#rmb').maskMoney('unmasked')[0];
@@ -153,7 +159,11 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            if(gongqi==null)
+            {
+                gongqi="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
 
         $('.hetong').each(function(){
@@ -194,6 +204,7 @@
             var xmid=getUrlParam('xm_id');
             var ssdwid=$(this).val();
             var guojiaid=getUrlParam('guojia_id');
+            var gongqi=getUrlParam('gongqi');
             var hetongid=getUrlParam('hetong_id');
             var fromtime=getUrlParam('fromtime');
             var endtime=getUrlParam('endtime');
@@ -231,7 +242,11 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            if(gongqi==null)
+            {
+                gongqi="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
 
         $('.ssdw').each(function(){
@@ -272,6 +287,7 @@
             var hetongid=getUrlParam('hetong_id');
             var guojiaid=$(this).val();
             var ssdwid=getUrlParam('ssdw_id');
+            var gongqi=getUrlParam('gongqi');
             var fromtime=getUrlParam('fromtime');
             var endtime=getUrlParam('endtime');
             var rmb=$('#rmb').maskMoney('unmasked')[0];
@@ -308,7 +324,11 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            if(gongqi==null)
+            {
+                gongqi="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
 
         $('.guojia').each(function(){
@@ -340,6 +360,7 @@
             var hetongid=getUrlParam('hetong_id');
             var guojiaid=getUrlParam('guojia_id');
             var ssdwid=getUrlParam('ssdw_id');
+            var gongqi=$('#gongqi').val();
             var fromtime=$('#fromtime').val()
             var endtime=$('#endtime').val()
             var rmb=$('#rmb').maskMoney('unmasked')[0];
@@ -376,7 +397,11 @@
             {
                 usd="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd;
+            if(gongqi==null)
+            {
+                gongqi="";
+            }
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
 
 
@@ -407,6 +432,12 @@
         if (getUrlParam('usd')=='null')
         {
             $('#usd').val("");
+        }
+
+        $('#gongqi').val(getUrlParam('gongqi'));
+        if (getUrlParam('gongqi')=='null')
+        {
+            $('#gongqi').val("");
         }
 
 
@@ -510,9 +541,15 @@
       <td class="col-lg-12" colspan="2">
         <table>
 
+          <td>
+            &nbsp;工期：
+          </td>
+          <td>
+            <input style="width: 120px;" type="text" class="input-sm form-control" id="gongqi">
+          </td>
 
           <td>
-            &nbsp;&nbsp;工期：
+            &nbsp;&nbsp;开完工时间：
           </td>
           <td>
             <div class="form-group" id="data_5">
@@ -576,7 +613,7 @@
                 <thead>
                 <tr>
                   <th>项目名称</th>
-                  <th>工期（年）</th>
+                  <th>工期（月）</th>
                   <th>合同金额</th>
                   <th>合同类型</th>
                   <th>国家</th>
@@ -647,7 +684,12 @@
                           </td>
 
                           <td>
-                            <%= yeji.shishidanwei %>
+                            <% @ssdws.each do |f| %>
+                                <% if f.id.to_s == yeji.ssdw_id.to_s %>
+                                    <%= f.name %>
+                                    <% break %>
+                                <% end %>
+                            <% end %>
                           </td>
 
                           <td>

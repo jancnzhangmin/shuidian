@@ -3,6 +3,15 @@
         $('.file-box').each(function () {
             animationHover(this, 'pulse');
         });
+        $('#yyzz_submit').click(function(){
+            if($('#yyzz_att').val()=='')
+            {
+                $('#yyzz_alert_lab').html('营业执照不能为空！');
+                $('#yyzz_alert').show();
+
+                return false;
+            }
+        });
     });
 </script>
 
@@ -39,13 +48,16 @@
 <%= form_for([@zhengzhao,@zhengzhao.zhengzhaoexpands.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
     <div class="form-group">
       <div class="col-sm-3">
-        <%= f.file_field :expand ,class:"form-control"%>
+        <%= f.file_field :expand ,class:"form-control",id:'yyzz_att'%>
         <%= f.hidden_field :keyword, value:"yyzz"%>
         <%= f.hidden_field :zhengzhao_id,value: @zhengzhao.id %>
       </div>
       <div>
-
-        <button class="btn btn-w-m btn-success mylink" type="submit">上传营业执照</button>
+        <button class="btn btn-w-m btn-success mylink pull-left" type="submit" id="yyzz_submit">上传营业执照</button>
+        <i class="pull-left">&nbsp;</i>
+        <div id="yyzz_alert" class="alert alert-danger text-center col-sm-2 " style="display: none;padding-top: 8px;padding-bottom: 0px;">
+          <label id="yyzz_alert_lab"></label></a>
+        </div>
       </div>
     </div>
 <% end %>

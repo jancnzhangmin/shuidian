@@ -3,10 +3,18 @@
         $('.file-box').each(function () {
             animationHover(this, 'pulse');
         });
+        $('#byxx_submit').click(function(){
+            if($('#byxx_att').val()=='')
+            {
+                $('#byxx_alert_lab').html('毕业证不能为空！');
+                $('#byxx_alert').show();
+                return false;
+            }
+        });
     });
 </script>
 <div class="ibox-content form-horizontal m-t">
-  <h3>&nbsp;&nbsp;&nbsp;&nbsp;毕业学校</h3>
+  <h3>&nbsp;&nbsp;&nbsp;&nbsp;毕业证</h3>
 
 
   <% @peo.peoatts.each do |f| %>
@@ -39,14 +47,19 @@
   <%= form_for([@peo,@peo.peoatts.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
       <div class="form-group">
         <div class="col-sm-3">
-          <%= f.file_field :attch ,class:"form-control"%>
+          <%= f.file_field :attch ,class:"form-control",id:'byxx_att'%>
           <%= f.hidden_field :keyword, value:"byxx"%>
           <%= f.hidden_field :peo_id,value: @peo.id %>
         </div>
-        <div>
 
-          <button class="btn btn-w-m btn-success mylink" type="submit">上传毕业学校</button>
+        <div>
+          <button class="btn btn-w-m btn-success mylink pull-left" type="submit" id="byxx_submit">上传毕业证</button>
+          <i class="pull-left">&nbsp;</i>
+          <div id="byxx_alert" class="alert alert-danger text-center col-sm-2 " style="display: none;padding-top: 8px;padding-bottom: 0px;">
+            <label id="byxx_alert_lab"></label></a>
+          </div>
         </div>
+
       </div>
   <% end %>
 </div>

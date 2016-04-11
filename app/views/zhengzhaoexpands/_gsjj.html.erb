@@ -3,6 +3,15 @@
         $('.file-box').each(function () {
             animationHover(this, 'pulse');
         });
+        $('#gsjj_submit').click(function(){
+            if($('#gsjj_att').val()=='')
+            {
+                $('#gsjj_alert_lab').html('公司简介不能为空！');
+                $('#gsjj_alert').show();
+
+                return false;
+            }
+        });
     });
 </script>
 <div class="ibox-content form-horizontal m-t">
@@ -37,13 +46,16 @@
 <%= form_for([@zhengzhao,@zhengzhao.zhengzhaoexpands.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
     <div class="form-group">
       <div class="col-sm-3">
-        <%= f.file_field :expand ,class:"form-control"%>
+        <%= f.file_field :expand ,class:"form-control",id:'gsjj_att'%>
         <%= f.hidden_field :keyword, value:"gsjj"%>
         <%= f.hidden_field :zhengzhao_id,value: @zhengzhao.id %>
       </div>
       <div>
-
-        <button class="btn btn-w-m btn-success mylink" type="submit">上传公司简介</button>
+        <button class="btn btn-w-m btn-success mylink pull-left" type="submit" id="gsjj_submit">上传公司简介</button>
+        <i class="pull-left">&nbsp;</i>
+        <div id="gsjj_alert" class="alert alert-danger text-center col-sm-2 " style="display: none;padding-top: 8px;padding-bottom: 0px;">
+          <label id="gsjj_alert_lab"></label></a>
+        </div>
       </div>
     </div>
 <% end %>

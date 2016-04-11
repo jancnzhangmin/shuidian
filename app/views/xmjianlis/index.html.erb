@@ -1,11 +1,196 @@
 <%= render 'left' %>
 <%= render 'top' %>
 
+
+<script>
+    $(document).ready(function () {
+
+                function getUrlParam(name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                    if (r != null) return unescape(r[2]);
+                    return null; //返回参数值
+                }
+
+        //////////////////////////////////////国家部分
+        var coun_id = getUrlParam('coun_id');
+
+        $('.coun').removeClass('btn-success');
+        $('.coun').addClass('btn-white');
+
+        $('.coun').click( function() {
+            $('.coun').removeClass('btn-success');
+            $('.coun').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#coun_id').val($(this).val());
+
+            var languageid=getUrlParam('language_id');
+            var xm=$('#xm').val();
+
+            if(languageid==null)
+            {
+                languageid=0;
+            }
+            if(xm==null)
+            {
+                xm='';
+            }
+
+            location.href = "?coun_id="+$('#coun_id').val() + "&language_id=" + languageid + "&xm=" + xm;
+        });
+
+        $('.coun').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == coun_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(coun_id==null) {
+            $('.coun').each(function () {
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
+                //$('#idName').val();
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+        //////////////////////////////////////语言部分
+        var language_id = getUrlParam('language_id');
+
+        $('.language').removeClass('btn-success');
+        $('.language').addClass('btn-white');
+
+        $('.language').click( function() {
+            $('.language').removeClass('btn-success');
+            $('.language').addClass('btn-white');
+            $(this).addClass('btn-success');
+            $(this).removeClass('btn-white');
+            $('#language_id').val($(this).val());
+
+            var counid=getUrlParam('coun_id');
+            var xm=$('#xm').val();
+
+            if(counid==null)
+            {
+                counid=0;
+            }
+            if(xm==null)
+            {
+                xm='';
+            }
+
+            location.href = "?coun_id="+counid + "&language_id=" + $('#language_id').val() + "&xm=" + xm;
+        });
+
+        $('.language').each(function(){
+            //var idName= this;
+            //$('#idName').val();
+            if ($(this).val() == language_id)
+            {
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+            }
+
+        });
+
+        if(language_id==null) {
+            $('.language').each(function () {
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
+                //$('#idName').val();
+                if ($(this).val() == '0') {
+                    $(this).addClass('btn-success');
+                    $(this).removeClass('btn-white');
+                }
+
+            });
+        }
+
+
+$('.query').click(function()
+{
+
+        var counid=getUrlParam('coun_id');
+        var languageid=getUrlParam('language_id');
+
+        if(counid==null)
+        {
+            counid=0;
+        }
+        if(languageid==null)
+        {
+            languageid=0;
+        }
+
+        location.href = "?coun_id="+counid + "&language_id=" + languageid + "&xm=" + $('#xm').val();
+
+});
+
+
+
+
+
+            });
+
+    </script>
+
+
+
 <div class="col-lg-12">
   <div class="ibox float-e-margins">
     <div class="ibox-title">
       <h5>简历管理</h5>
 
+    </div>
+
+    <div class="ibox-content" style="height: 240px;">
+      <table class="col-lg-12 table">
+
+        <tr>
+          <td class="col-sm-1">语言：</td>
+          <td class="col-lg-11">
+            <button class="language btn btn-success btn-xs" value="0">全部</button>
+            <% @languages.each do |language| %>
+                &nbsp;<button class="language btn btn-white btn-xs" value=<%= language.id %>><%= language.language %></button>
+            <% end %>
+          </td>
+          <td>
+            <input type="hidden" id="language_id" value="0">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="col-sm-1">国家：</td>
+          <td class="col-lg-11">
+            <button class="coun btn btn-success btn-xs" value="0">全部</button>
+            <% @couns.each do |coun| %>
+                &nbsp;<button class="coun btn btn-white btn-xs" value=<%= coun.id %>><%= coun.coun %></button>
+            <% end %>
+          </td>
+          <td>
+            <input type="hidden" id="coun_id" value="0">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="col-sm-1">项目：</td>
+          <td class="col-lg-11">
+            <input id="xm" value=<%= @xm %>>&nbsp;<button class="query btn btn-success btn-xs btn-w-s" style="margin-top: 3px;">查询</button>
+
+          </td>
+
+        </tr>
+
+
+      </table>
     </div>
 
 

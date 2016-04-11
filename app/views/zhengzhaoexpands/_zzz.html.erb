@@ -3,6 +3,15 @@
         $('.file-box').each(function () {
             animationHover(this, 'pulse');
         });
+        $('#zzz_submit').click(function(){
+            if($('#zzz_att').val()=='')
+            {
+                $('#zzz_alert_lab').html('资质证不能为空！');
+                $('#zzz_alert').show();
+
+                return false;
+            }
+        });
     });
 </script>
 <div class="ibox-content form-horizontal m-t">
@@ -37,13 +46,16 @@
 <%= form_for([@zhengzhao,@zhengzhao.zhengzhaoexpands.build],:html => {:class=>'form-horizontal m-t',id:"signupForm",:multipart => true}) do |f| %>
     <div class="form-group">
       <div class="col-sm-3">
-        <%= f.file_field :expand ,class:"form-control"%>
+        <%= f.file_field :expand ,class:"form-control",id:'zzz_att'%>
         <%= f.hidden_field :keyword, value:"zzz"%>
         <%= f.hidden_field :zhengzhao_id,value: @zhengzhao.id %>
       </div>
       <div>
-
-        <button class="btn btn-w-m btn-success mylink" type="submit">上传资质证</button>
+        <button class="btn btn-w-m btn-success mylink pull-left" type="submit" id="zzz_submit">上传资质证</button>
+        <i class="pull-left">&nbsp;</i>
+        <div id="zzz_alert" class="alert alert-danger text-center col-sm-2 " style="display: none;padding-top: 8px;padding-bottom: 0px;">
+          <label id="zzz_alert_lab"></label></a>
+        </div>
       </div>
     </div>
 <% end %>
