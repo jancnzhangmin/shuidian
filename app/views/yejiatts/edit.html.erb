@@ -1,0 +1,53 @@
+<script>
+    $(document).ready(function () {
+        $('.myli5').click(function(){
+            $("#headimg5").attr("src", $(this)[0].src);
+            $('#mylable5').text('');
+            $('#language_id5').val($(this)[0].id);
+        });
+
+
+
+
+    });
+</script>
+
+<div class="ibox-content">
+  <%= form_for([@yeji,@yejiatt], :html => {:class=>'form-horizontal m-t'}) do |f| %>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label"></label>
+        <div class="col-sm-5">
+          <div class="input-group-btn">
+            <button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button"><img id="headimg5" width="35px"><lable id="mylable5">语言</lable><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu myul5">
+              <% @languages.each do |language| %>
+                  <li>
+                    <a> <%= image_tag(language.flag.url,width:"35px", class:'myli5',id:language.id) %>&nbsp;&nbsp;<%= language.language %></a>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">名称：</label>
+        <div class="col-sm-5">
+          <%= f.text_field :content ,class:"form-control"%>
+          <%= f.hidden_field :langguage_id ,class:"form-control", id:'language_id5'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-3">
+          <button class="btn btn-w-m btn-success mylink" type="submit">确定</button>
+
+        </div>
+      </div>
+
+  <% end %>
+</div>
