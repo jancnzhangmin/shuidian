@@ -55,16 +55,16 @@ end
       myselect = myselect + ' and gongqi >='+params[:gongqi]
     end
 if (params[:fromtime]!=nil)
-  fromyear= params[:fromtime][0,4]
-  endyear=params[:endtime][0,4]
+  fromyear =  params[:fromtime]
+  endyear =  params[:endtime]
 
 if fromyear != "" && endyear != ""
-  myselect = myselect + ' and begindate >= '+ fromyear.to_s + ' and enddate <=' + endyear.to_s
+  myselect = myselect + ' and begindate >= ' + "'" + fromyear.to_s + "'"  + ' and enddate <=' +  "'" + endyear.to_s + "'"
 elsif fromyear && fromyear != ""
 
-  myselect = myselect + ' and begindate >= '+ fromyear.to_s
+  myselect = myselect + ' and begindate >= '+  "'" + fromyear.to_s + "'"
 elsif  endyear && endyear != ""
-  myselect = myselect + ' and enddate <= '+ endyear.to_s
+  myselect = myselect + ' and enddate <= '+  "'" + endyear.to_s + "'"
 
 end
 

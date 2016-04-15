@@ -542,10 +542,10 @@
         <table>
 
           <td>
-            &nbsp;工期：
+
           </td>
           <td>
-            <input style="width: 120px;" type="text" class="input-sm form-control" id="gongqi">
+            <input style="width: 120px;" type="hidden" class="input-sm form-control" id="gongqi">
           </td>
 
           <td>
@@ -596,6 +596,14 @@
 <div class="ibox-content">
   <% @projecttypes.each do |p| %>
 
+      <% params_xmid = params[:xm_id] %>
+      <% if !params_xmid || params_xmid==""  %>
+          <% params_xmid ='0' %>
+      <% end %>
+
+      <% if params_xmid == '0' || p.id.to_s == params_xmid %>
+
+
       <div class="row">
         <div class="col-lg-12">
           <div class="ibox float-e-margins border-bottom">
@@ -623,6 +631,11 @@
                 </tr>
                 </thead>
                 <tbody>
+
+
+
+
+
                 <% @yejis.each do |yeji| %>
                     <% if yeji.projecttype_id == p.id %>
                         <tr>
@@ -720,7 +733,7 @@
         </div>
       </div>
 
-
+<% end %>
   <% end %>
 
 
