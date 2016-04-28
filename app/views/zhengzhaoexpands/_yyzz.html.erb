@@ -28,13 +28,14 @@
           <span class="corner"></span>
           <div class="image" align="center">
             <% if f.expand_content_type[0,5]=="image"%>
-                <%= image_tag(f.expand.url,width: "300px") %>
+                <%= image_tag(f.expand.url,width: "300px",title:f.expand_file_name) %>
             <%else%>
-                <%= image_tag("attch.png",width:"100px") %>
+                <%= image_tag("attch.png",width:"100px",title:f.expand_file_name) %>
             <%end%>
           </div>
           <div class="file-name">
-            <%= link_to '',[f.zhengzhao,f], class: "fa fa-trash pull-right fa-2x",style:"margin-top:-15px;", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= f.expand_file_name %>
+            <%= link_to '',[f.zhengzhao,f], class: "fa fa-trash pull-right fa-2x", method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
         </a>
       </div>
