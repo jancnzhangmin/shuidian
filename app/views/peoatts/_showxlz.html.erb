@@ -12,26 +12,9 @@
   <% @peo.peoatts.each do |f| %>
       <% if f.keyword.to_s == "xlz" %>
 
-          <div class="file-box">
-            <div class="file">
-              <a href=<%= f.attch.url %>>
-
-                <span class="corner" ></span>
-                <div class="image" align= "center">
-                  <% if f.attch_content_type[0,5]=="image"%>
-                      <%= image_tag(f.attch.url,width: "300px",title:f.attch_file_name) %>
-                  <%else%>
-                      <%= image_tag("attch.png",width:"100px",title:f.attch_file_name) %>
-                  <%end%>
-                </div>
-
-
-              </a>
-              <div class="file-name">
-                <%= f.attch_file_name %>
-              </div>
-            </div>
-          </div>
+          <a href=<%= f.attch.url %>>
+            <%= image_tag("attch.png",width:"30px",title:f.attch_file_name) %>&nbsp;&nbsp;<%= f.attch_file_name %>
+          </a>
       <% end %>
 
   <% end %>

@@ -12,24 +12,9 @@
   <% @zhengzhao.zhengzhaoexpands.each do |f| %>
       <% if f.keyword.to_s == "wsszm" %>
 
-          <div class="file-box">
-            <div class="file">
-              <a href=<%= f.expand.url %>>
-                <span class="corner"></span>
-                <div class="image" align="center">
-                  <% if f.expand_content_type[0,5]=="image"%>
-                      <%= image_tag(f.expand.url,width: "300px",title:f.expand_file_name) %>
-                  <%else%>
-                      <%= image_tag("attch.png",width:"100px",title:f.expand_file_name) %>
-                  <%end%>
-                </div>
-
-              </a>
-              <div class="file-name">
-                <%= f.expand_file_name %>
-              </div>
-            </div>
-          </div>
+          <a href=<%= f.expand.url %>>
+            <%= image_tag("attch.png",width:"30px",title:f.expand_file_name) %>&nbsp;&nbsp;<%= f.expand_file_name %>
+          </a>
       <% end %>
 
   <% end %>
