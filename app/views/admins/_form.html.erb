@@ -45,7 +45,7 @@
       </div>
 
 
-      <% if @url.to_s.last(4)!="edit" %>
+
 
           <div class="form-group">
             <label class="col-sm-3 control-label">密码：</label>
@@ -60,13 +60,18 @@
             </div>
           </div>
 
-      <% end %>
+
 
       <div class="form-group">
         <label class="col-sm-3 control-label">权限：</label>
         <div class="col-sm-5">
+          <% if session[:auth] == '1' %>
           <%= f.text_field :authority ,class:"form-control"%>
+              <% else %>
+              <%= f.text_field :authority ,class:"form-control",readonly:"true"%>
+              <% end %>
         </div>
+        <div style="margin-top: 10px;">0:仅查看;1:编辑/查看</div>
       </div>
 
 
@@ -74,7 +79,12 @@
         <label class="col-sm-3 control-label">激活:</label>
         <div class="col-sm-5">
           <%= f.hidden_field :status ,class:"form-control",id:"status",value:"1"%>
+          <% if session[:auth] == '1' %>
           <input type="checkbox" checked value="" id="statuscheck" class="icheckbox" onclick="statusclick()"/>enabled
+              <% else %>
+              <input type="checkbox" checked value="" id="statuscheck" class="icheckbox" disabled="disabled" onclick="statusclick()"/>enabled
+              <% end %>
+
         </div>
       </div>
 
@@ -91,7 +101,7 @@
 
       <div class="form-group">
         <div class="col-sm-4 col-sm-offset-3">
-          <button class="btn btn-sucess" type="submit">提交</button>
+          <button class="btn btn-w-m btn-success mylink" type="submit">提交</button>
 
         </div>
       </div>

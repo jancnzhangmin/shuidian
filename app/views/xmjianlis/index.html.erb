@@ -252,14 +252,18 @@ $('.query').click(function()
 
 
               <td>
+                <% if session[:auth]=='1' %>
                 <%= link_to "", edit_xmjianli_path(xmjianli),class: "fa fa-pencil" %>&nbsp;
                 <%= link_to '', xmjianli, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
               </td>
             </tr>
         <% end %>
         </tbody>
       </table>
+      <% if session[:auth]=='1' %>
       <%= link_to "新增", new_xmjianli_path,class: "btn btn-w-m btn-success mylink pull-right" %>
+          <% end %>
       <br>
     </div>
 

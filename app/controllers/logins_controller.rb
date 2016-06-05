@@ -1,5 +1,13 @@
 class LoginsController < ApplicationController
 
+def index
+  session[:name]= nil
+  session[:login]=nil
+  session[:auth]=nil
+  session[:id]=nil
+  redirect_to new_login_path
+end
+
 
   def new
  adm= Admin.all
@@ -18,6 +26,9 @@ class LoginsController < ApplicationController
     else
       if admin &&  admin.authenticate(params[:login][:password])
         session[:name]= admin.name
+        session[:login]=admin.login
+        session[:auth]=admin.authority
+        session[:id]=admin.id
         redirect_to peos_path
       else
         redirect_to action: 'new',id:0

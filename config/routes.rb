@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   resources :ssdws
 
 
-  root 'logins#new'
+  root 'logins#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

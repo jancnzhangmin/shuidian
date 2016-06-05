@@ -1,4 +1,10 @@
 
+<% if !session[:login] %>
+    <script language="javascript" type="text/javascript">
+        window.location.href="/";
+    </script>
+    <% end %>
+
 <div id="wrapper">
   <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
@@ -6,23 +12,21 @@
         <li class="nav-header">
 
           <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+
                              </span>
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                                 <span class="clear"> <span class="block m-t-xs">
                              </span>  <span class="text-muted text-xs block"><%= session[:name] %> <b class="caret"></b></span> </span>
             </a>
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-              <li><a href="form_avatar.html">修改头像</a>
-              </li>
+
               <li><a href="profile.html">个人资料</a>
               </li>
-              <li><a href="contacts.html">联系我们</a>
-              </li>
-              <li><a href="mailbox.html">信箱</a>
-              </li>
+
+
               <li class="divider"></li>
-              <li><a href="login.html">安全退出</a>
+              <li>
+                <%= link_to '安全退出',logins_path %>
               </li>
             </ul>
           </div>
@@ -59,6 +63,7 @@
             <li>
               <%= link_to "业绩列表", yejis_path,'data-no-turbolink' => true %>
             </li>
+            <% if session[:auth]=='1' %>
             <li>
               <%= link_to "合同类型", hetongs_path,'data-no-turbolink' => true %>
             </li>
@@ -74,6 +79,7 @@
             <li>
               <%= link_to "实施名义", ssdws_path,'data-no-turbolink' => true %>
             </li>
+                <% end %>
           </ul>
 
         </li>
@@ -84,6 +90,7 @@
             <li>
               <%= link_to "人员列表", peos_path,'data-no-turbolink' => true %>
             </li>
+            <% if session[:auth]=='1' %>
             <li>
               <%= link_to "专业", zhuangyes_path,'data-no-turbolink' => true %>
             </li>
@@ -96,9 +103,10 @@
             <li>
               <%= link_to "职称证专业", zczs_path,'data-no-turbolink' => true %>
             </li>
+                <% end %>
           </ul>
         </li>
-
+        <% if session[:auth]=='1' %>
         <li>
           <a href="index.html#"><i class="fa fa-user"></i> <span class="nav-label">语言</span>  <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
@@ -107,7 +115,7 @@
             </li>
           </ul>
         </li>
-
+<% end %>
 
         <li>
           <a href="index.html#"><i class="fa fa-user"></i> <span class="nav-label">简历</span>  <span class="fa arrow"></span></a>
@@ -115,12 +123,14 @@
             <li>
               <%= link_to "简历列表", xmjianlis_path,'data-no-turbolink' => true %>
             </li>
+            <% if session[:auth]=='1' %>
             <li>
               <%= link_to "语言", xmlanguages_path,'data-no-turbolink' => true %>
             </li>
             <li>
               <%= link_to "国家", xmcouns_path,'data-no-turbolink' => true %>
             </li>
+                <% end %>
           </ul>
         </li>
 

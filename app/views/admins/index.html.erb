@@ -39,14 +39,18 @@
                 <% end %>
               </td>
               <td>
+                <% if session[:auth]=='1' %>
                 <%= link_to "", edit_admin_path(admin),class: "fa fa-pencil" %>&nbsp;
               <%= link_to '', admin, class: "fa fa-trash", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
               </td>
             </tr>
         <% end %>
         </tbody>
       </table>
+      <% if session[:auth]=='1' %>
       <%= link_to "new", new_admin_path,class: "btn btn-w-m btn-success mylink pull-right",'data-no-turbolink'=>true %>
+          <% end %>
       <br>
     </div>
 
