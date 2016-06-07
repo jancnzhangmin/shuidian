@@ -22,28 +22,29 @@ end
 
 
     myselect = 'select * from peos where name like '+'"%'+ @zhuanye_name +'%"'
-    if params[:zhuanye_id].to_i>0
-      myselect=myselect+" and zhuangye_id ="+params[:zhuanye_id]
-    end
-
-    if params[:xueli_id].to_i>0
-      myselect=myselect+" and xueli_id ="+params[:xueli_id]
-    end
-
-    if params[:zhicheng_id].to_i>0
-      myselect=myselect+" and zhicheng_id ="+params[:zhicheng_id]
-    end
-
-    if params[:zczzy_id].to_i>0
-      myselect=myselect+" and zcz_id ="+params[:zczzy_id]
-    end
-
-    if params[:worktime] != nil
-      myselect=myselect+" and worktime >="+'"' + params[:worktime] +'"'
-    end
+    # if params[:zhuanye_id].to_i>0
+    #   myselect=myselect+" and zhuangye_id ="+params[:zhuanye_id]
+    # end
+    #
+    # if params[:xueli_id].to_i>0
+    #   myselect=myselect+" and xueli_id ="+params[:xueli_id]
+    # end
+    #
+    # if params[:zhicheng_id].to_i>0
+    #   myselect=myselect+" and zhicheng_id ="+params[:zhicheng_id]
+    # end
+    #
+    # if params[:zczzy_id].to_i>0
+    #   myselect=myselect+" and zcz_id ="+params[:zczzy_id]
+    # end
+    #
+    # if params[:worktime] != nil
+    #   myselect=myselect+" and worktime >="+'"' + params[:worktime] +'"'
+    # end
 
     @peos=Peo.find_by_sql(myselect)
 
+@testsql = myselect
 
   end
 

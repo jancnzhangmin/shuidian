@@ -10,22 +10,77 @@
             if (r != null) return unescape(r[2]); return null; //返回参数值
         }
 
+        Array.prototype.removeByValue = function(val){
+            for(var i = 0;i<this.length;i++){
+                if(this[i]==val){
+                    this.splice(i,1);
+
+                }
+            }
+        }
+
 
 
 
 //////////////////////////////////////专业部分
         var zhuanye_id = getUrlParam('zhuanye_id');
 
-        $('.zhuanye').removeClass('btn-success');
-        $('.zhuanye').addClass('btn-white');
+        //$('.zhuanye').removeClass('btn-success');
+        //$('.zhuanye').addClass('btn-white');
 
         $('.zhuanye').click( function() {
-            $('.zhuanye').removeClass('btn-success');
-            $('.zhuanye').addClass('btn-white');
+            //$('.zhuanye').removeClass('btn-success');
+            //$('.zhuanye').addClass('btn-white');
+            //$(this).addClass('btn-success');
+            //$(this).removeClass('btn-white');
+            if(zhuanye_id==null)
+            {
+                zhuanye_id='0:';
+            }
+            //$('#zhuanye_id').val(zhuanye_id + $(this).val() + ':');
+            //alert($('#zhuanye_id').val());
+            var arrayzhuanye = $('#zhuanye_id').val().split(':');
+            //alert(arrayzhuanye);
+
+            //alert(arrayzhuanye);
+
+            //alert(arrayzhuanye);
             $(this).addClass('btn-success');
             $(this).removeClass('btn-white');
-            $('#zhuanye_id').val($(this).val());
+            if($.inArray($(this).val(),arrayzhuanye)>=0)
+            {
+                //alert($(this).val());
+                alert(arrayzhuanye);
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
+                arrayzhuanye.removeByValue($(this).val());
+                alert(arrayzhuanye);
+            }else
+            {
 
+                $(this).addClass('btn-success');
+                $(this).removeClass('btn-white');
+                arrayzhuanye.push($(this).val());
+            }
+            //alert(arrayzhuanye);
+            arrayzhuanye = $.unique(arrayzhuanye);
+            arrayzhuanye = arrayzhuanye.sort();
+            if(arrayzhuanye.length>1)
+            {
+
+                arrayzhuanye.removeByValue('');
+                arrayzhuanye.removeByValue('0');
+            }
+
+
+
+            $('#zhuanye_id').val('');
+            for(var i=0;i<arrayzhuanye.length;i++)
+            {
+                $('#zhuanye_id').val($('#zhuanye_id').val()+arrayzhuanye[i]+':');
+            }
+
+            //$('#zhuanye_id').val($('#zhuanye_id').val().substring(0,$('#zhuanye_id').val().length-1));
             var xueliid=getUrlParam('xueli_id');
             var zhichengid=getUrlParam('zhicheng_id');
             var zczzyid=getUrlParam('zczzy_id');
@@ -55,16 +110,21 @@
             location.href = "?zhuanye_id="+$('#zhuanye_id').val() + "&xueli_id=" + xueliid + "&zhicheng_id=" + zhichengid+"&zczzy_id="+zczzyid+"&name="+name+"&worktime="+worktime;
         });
 
-        $('.zhuanye').each(function(){
-            //var idName= this;
-            //$('#idName').val();
-            if ($(this).val() == zhuanye_id)
-            {
-                $(this).addClass('btn-success');
-                $(this).removeClass('btn-white');
-            }
 
-        });
+for(var i=0;i<arrayzhuanye.length;i++)
+        {
+            $('.zhuanye').each(function () {
+                //var idName= this;
+                //$('#idName').val();
+
+                    if ($(this).val() == i) {
+                        $(this).addClass('btn-success');
+                        $(this).removeClass('btn-white');
+                    }
+
+            });
+        }
+
 
         if(zhuanye_id==null) {
             $('.zhuanye').each(function () {
@@ -334,6 +394,7 @@
   <div class="ibox float-e-margins">
     <div class="ibox-title">
       <h5>人员管理</h5>
+      <%= @testsql %>
 <%= @zhuanye_name %>
     </div>
 
