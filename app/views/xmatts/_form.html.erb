@@ -33,7 +33,7 @@
               <img src=<%= image_path('attch.png') %> title=<%=f.attch_file_name %> width=100px>
             </div>
             <div class="file-name">
-              <%= f.name %>
+              <%= f.attch_file_name %>
               <%= link_to '',[f.xmjianli,f], class: "fa fa-trash pull-right fa-2x", method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
           </a>
