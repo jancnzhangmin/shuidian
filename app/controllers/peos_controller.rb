@@ -22,25 +22,41 @@ end
 
 
     myselect = 'select * from peos where name like '+'"%'+ @zhuanye_name +'%"'
+
+    if params[:zhuanye_id] !="" && params[:zhuanye_id] !=nil
+      if params[:zhuanye_id].include?":"
+        zhuanyesplit = params[:zhuanye_id].split(':')
+        myselect = myselect + " and zhuangye_id in("
+        zhuanyesplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:zhuanye_id] !="0"
+        myselect=myselect+" and zhuangye_id ="+params[:zhuanye_id]
+          end
+      end
+    end
     # if params[:zhuanye_id].to_i>0
     #   myselect=myselect+" and zhuangye_id ="+params[:zhuanye_id]
     # end
     #
-    # if params[:xueli_id].to_i>0
-    #   myselect=myselect+" and xueli_id ="+params[:xueli_id]
-    # end
-    #
-    # if params[:zhicheng_id].to_i>0
-    #   myselect=myselect+" and zhicheng_id ="+params[:zhicheng_id]
-    # end
-    #
-    # if params[:zczzy_id].to_i>0
-    #   myselect=myselect+" and zcz_id ="+params[:zczzy_id]
-    # end
-    #
-    # if params[:worktime] != nil
-    #   myselect=myselect+" and worktime >="+'"' + params[:worktime] +'"'
-    # end
+    if params[:xueli_id].to_i>0
+      myselect=myselect+" and xueli_id ="+params[:xueli_id]
+    end
+
+    if params[:zhicheng_id].to_i>0
+      myselect=myselect+" and zhicheng_id ="+params[:zhicheng_id]
+    end
+
+    if params[:zczzy_id].to_i>0
+      myselect=myselect+" and zcz_id ="+params[:zczzy_id]
+    end
+
+    if params[:worktime] != nil
+      myselect=myselect+" and worktime >="+'"' + params[:worktime] +'"'
+    end
 
     @peos=Peo.find_by_sql(myselect)
 
