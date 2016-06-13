@@ -144,31 +144,43 @@ break;
 
 
 
-//        if(zhuanye_id==null) {
-//            $('.zhuanye').each(function () {
-//                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
-//                //$('#idName').val();
-//                if ($(this).val() == '0') {
-//                    $(this).addClass('btn-success');
-//                    $(this).removeClass('btn-white');
-//                }
-//
-//            });
-//        }
-
-
 //////////////////////////////////////学历部分
         var xueli_id = getUrlParam('xueli_id');
+        var arrayxuli = new Array();
+        try {
+            arrayxuli = xueli_id.split(':');
+        }catch(err){}
 
-        $('.xueli').removeClass('btn-success');
-        $('.xueli').addClass('btn-white');
 
         $('.xueli').click( function() {
-            $('.xueli').removeClass('btn-success');
-            $('.xueli').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#xueli_id').val($(this).val());
+            if($.inArray($(this).val(),arrayxuli)>=0)
+            {
+                arrayxuli.removeByValue($(this).val());
+            }else
+            {
+                arrayxuli.push($(this).val());
+            }
+            arrayxuli = $.unique(arrayxuli);
+            arrayxuli = arrayxuli.sort();
+            if(arrayxuli.length>1)
+            {
+
+                arrayxuli.removeByValue('');
+                arrayxuli.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arrayxuli.length = 0;
+                arrayxuli.push(0);
+            }
+            $('#xueli_id').val('');
+            for(var i=0;i<arrayxuli.length;i++)
+            {
+                $('#xueli_id').val($('#xueli_id').val()+arrayxuli[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            xueli_id = ClearSymbol($('#xueli_id').val());
+            $('#xueli_id').val(xueli_id);
             var zhuanyeid=getUrlParam('zhuanye_id');
             var zhichengid=getUrlParam('zhicheng_id');
             var zczzyid=getUrlParam('zczzy_id');
@@ -197,21 +209,28 @@ break;
             }
             location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + $('#xueli_id').val() +"&zhicheng_id=" + zhichengid +"&zczzy_id="+zczzyid+"&name="+name+"&worktime="+worktime;
         });
-
+        var showxueli = new Array();
+        try{
+            showxueli=xueli_id.split(':');
+        }catch(err){}
         $('.xueli').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == xueli_id)
-            {
+            if ($.inArray($(this).val(),showxueli)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(xueli_id==null) {
+        if(showxueli.length==0)
+        {
             $('.xueli').each(function () {
-                //var idName= this;
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
                 //$('#idName').val();
                 if ($(this).val() == '0') {
                     $(this).addClass('btn-success');
@@ -223,16 +242,41 @@ break;
 
 //////////////////////////////////////职称部分
         var zhicheng_id = getUrlParam('zhicheng_id');
+        var arrayzhicheng = new Array();
+        try {
+            arrayzhicheng = zhicheng_id.split(':');
+        }catch(err){}
 
-        $('.zhicheng').removeClass('btn-success');
-        $('.zhicheng').addClass('btn-white');
 
         $('.zhicheng').click( function() {
-            $('.zhicheng').removeClass('btn-success');
-            $('.zhicheng').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#zhicheng_id').val($(this).val());
+            if($.inArray($(this).val(),arrayzhicheng)>=0)
+            {
+                arrayzhicheng.removeByValue($(this).val());
+            }else
+            {
+                arrayzhicheng.push($(this).val());
+            }
+            arrayzhicheng = $.unique(arrayzhicheng);
+            arrayzhicheng = arrayzhicheng.sort();
+            if(arrayzhicheng.length>1)
+            {
+
+                arrayzhicheng.removeByValue('');
+                arrayzhicheng.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arrayzhicheng.length = 0;
+                arrayzhicheng.push(0);
+            }
+            $('#zhicheng_id').val('');
+            for(var i=0;i<arrayzhicheng.length;i++)
+            {
+                $('#zhicheng_id').val($('#zhicheng_id').val()+arrayzhicheng[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            zhicheng_id = ClearSymbol($('#zhicheng_id').val());
+            $('#zhicheng_id').val(zhicheng_id);
             var zhuanyeid=getUrlParam('zhuanye_id');
             var xueliid=getUrlParam('xueli_id');
             var zczzyid=getUrlParam('zczzy_id');
@@ -261,21 +305,28 @@ break;
             }
             location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +  $('#zhicheng_id').val()+"&zczzy_id=" + zczzyid+"&name=" + name+"&worktime="+worktime;
         });
-
+        var showzhicheng = new Array();
+        try{
+            showzhicheng=zhicheng_id.split(':');
+        }catch(err){}
         $('.zhicheng').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == zhicheng_id)
-            {
+            if ($.inArray($(this).val(),showzhicheng)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(zhicheng_id==null) {
+        if(showzhicheng.length==0)
+        {
             $('.zhicheng').each(function () {
-                //var idName= this;
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
                 //$('#idName').val();
                 if ($(this).val() == '0') {
                     $(this).addClass('btn-success');
@@ -288,16 +339,41 @@ break;
 
         //////////////////////////////////////职称证专业部分
         var zczzy_id = getUrlParam('zczzy_id');
+        var arrayzczzy = new Array();
+        try {
+            arrayzczzy = zczzy_id.split(':');
+        }catch(err){}
 
-        $('.zczzy').removeClass('btn-success');
-        $('.zczzy').addClass('btn-white');
 
         $('.zczzy').click( function() {
-            $('.zczzy').removeClass('btn-success');
-            $('.zczzy').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#zczzy_id').val($(this).val());
+            if($.inArray($(this).val(),arrayzczzy)>=0)
+            {
+                arrayzczzy.removeByValue($(this).val());
+            }else
+            {
+                arrayzczzy.push($(this).val());
+            }
+            arrayzczzy = $.unique(arrayzczzy);
+            arrayzczzy = arrayzczzy.sort();
+            if(arrayzczzy.length>1)
+            {
+
+                arrayzczzy.removeByValue('');
+                arrayzczzy.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arrayzczzy.length = 0;
+                arrayzczzy.push(0);
+            }
+            $('#zczzy_id').val('');
+            for(var i=0;i<arrayzczzy.length;i++)
+            {
+                $('#zczzy_id').val($('#zczzy_id').val()+arrayzczzy[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            zczzy_id = ClearSymbol($('#zczzy_id').val());
+            $('#zczzy_id').val(zczzy_id);
             var zhuanyeid=getUrlParam('zhuanye_id');
             var xueliid=getUrlParam('xueli_id');
             var worktime=$('#worktime').val();
@@ -326,21 +402,28 @@ break;
             }
             location.href = "?zhuanye_id=" + zhuanyeid + "&xueli_id=" + xueliid + "&zhicheng_id=" +zhichengid +"&zczzy_id=" +  $('#zczzy_id').val()+"&name="+name+"&worktime="+worktime;
         });
-
+        var showzczzy = new Array();
+        try{
+            showzczzy=zczzy_id.split(':');
+        }catch(err){}
         $('.zczzy').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == zczzy_id)
-            {
+            if ($.inArray($(this).val(),showzczzy)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(zczzy_id==null) {
+        if(showzczzy.length==0)
+        {
             $('.zczzy').each(function () {
-                //var idName= this;
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
                 //$('#idName').val();
                 if ($(this).val() == '0') {
                     $(this).addClass('btn-success');

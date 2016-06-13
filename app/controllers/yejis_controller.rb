@@ -30,20 +30,71 @@ end
 
     myselect ='select * from yejis where isnew = "0" '
 
-    if params[:ssdw_id] && params[:ssdw_id] > '0'
-      myselect = myselect + ' and ssdw_id = '+ params[:ssdw_id]
+
+
+
+    if params[:ssdw_id] !="" && params[:ssdw_id] !=nil
+      if params[:ssdw_id].include?":"
+        ssdwsplit = params[:ssdw_id].split(':')
+        myselect = myselect + " and ssdw_id in("
+        ssdwsplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:ssdw_id] !="0"
+          myselect=myselect+" and ssdw_id ="+params[:ssdw_id]
+        end
+      end
     end
 
-    if params[:xm_id] && params[:xm_id] >'0'
-      myselect = myselect + ' and projecttype_id = '+params[:xm_id]
+    if params[:xm_id] !="" && params[:xm_id] !=nil
+      if params[:xm_id].include?":"
+        xmsplit = params[:xm_id].split(':')
+        myselect = myselect + " and projecttype_id in("
+        xmsplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:xm_id] !="0"
+          myselect=myselect+" and projecttype_id ="+params[:xm_id]
+        end
+      end
     end
 
-    if params[:hetong_id] && params[:hetong_id] > '0'
-      myselect = myselect + ' and hetong_id = '+params[:hetong_id]
+    if params[:hetong_id] !="" && params[:hetong_id] !=nil
+      if params[:hetong_id].include?":"
+        hetongsplit = params[:hetong_id].split(':')
+        myselect = myselect + " and hetong_id in("
+        hetongsplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:hetong_id] !="0"
+          myselect=myselect+" and hetong_id ="+params[:hetong_id]
+        end
+      end
     end
 
-    if params[:guojia_id] && params[:guojia_id] > '0'
-      myselect = myselect + ' and guojia_id = '+params[:guojia_id]
+    if params[:guojia_id] !="" && params[:guojia_id] !=nil
+      if params[:guojia_id].include?":"
+        guojiasplit = params[:guojia_id].split(':')
+        myselect = myselect + " and guojia_id in("
+        guojiasplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:guojia_id] !="0"
+          myselect=myselect+" and guojia_id ="+params[:guojia_id]
+        end
+      end
     end
     if params[:rmb] && params[:rmb] > '0'
       myselect = myselect + ' and hetonge >='+params[:rmb]
@@ -72,7 +123,7 @@ end
 
   @yejis=Yeji.find_by_sql(myselect)
 
-
+  @testsql = myselect
 
 
 end

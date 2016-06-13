@@ -24,12 +24,40 @@ class XmjianlisController < ApplicationController
 
     myselect = 'select * from xmjianlis where name like '+'"%'+ @xm +'%"'
 
-    if params[:coun_id] && params[:coun_id] > '0'
-      myselect = myselect + ' and xmcoun_id = '+ params[:coun_id]
+
+
+    if params[:coun_id] !="" && params[:coun_id] !=nil
+      if params[:coun_id].include?":"
+        counsplit = params[:coun_id].split(':')
+        myselect = myselect + " and xmcoun_id in("
+        counsplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:coun_id] !="0"
+          myselect=myselect+" and xmcoun_id ="+params[:coun_id]
+        end
+      end
     end
 
-    if params[:language_id] && params[:language_id] > '0'
-      myselect = myselect + ' and xmlanguage_id = '+ params[:language_id]
+
+
+    if params[:language_id] !="" && params[:language_id] !=nil
+      if params[:language_id].include?":"
+        languagesplit = params[:language_id].split(':')
+        myselect = myselect + " and xmlanguage_id in("
+        languagesplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:language_id] !="0"
+          myselect=myselect+" and xmlanguage_id ="+params[:language_id]
+        end
+      end
     end
 
     @xmjianlis=Xmjianli.find_by_sql(myselect)

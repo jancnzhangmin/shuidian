@@ -21,22 +21,70 @@
             if (r != null) return unescape(r[2]); return null; //返回参数值
         }
 
+        Array.prototype.removeByValue = function(val){
+            for(var i = 0;i<this.length;i++){
+                if(this[i]==val){
+                    this.splice(i,1);
+                    break;
+                }
+            }
+        }
 
+
+        function ClearSymbol(name){
+            var myclear = name;
+            if(name.substr(0,1)==':')
+            {
+                myclear = name.substr(1,name.length);
+            }
+            if(name.substr(name.length-1,1)==':')
+            {
+                myclear = name.substr(0,name.length-1);
+            }
+            return myclear;
+        }
 
         //////////////////////////////////////项目类型
         var xm_id = getUrlParam('xm_id');
+        if(xm_id=='')
+        {
+            xm_id='0:';
+        }
+        var arrayxm = new Array();
+        try {
+            arrayxm = xm_id.split(':');
+        }catch(err){}
 
-        $('.xm').removeClass('btn-success');
-        $('.xm').addClass('btn-white');
 
         $('.xm').click( function() {
-            $('.xm').removeClass('btn-success');
-            $('.xm').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#xm_id').val($(this).val());
+            if($.inArray($(this).val(),arrayxm)>=0)
+            {
+                arrayxm.removeByValue($(this).val());
+            }else
+            {
+                arrayxm.push($(this).val());
+            }
+            arrayxm = $.unique(arrayxm);
+            arrayxm = arrayxm.sort();
+            if(arrayxm.length>1)
+            {
 
-            var xmid=$(this).val();
+                arrayxm.removeByValue('');
+                arrayxm.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arrayxm.length = 0;
+                arrayxm.push(0);
+            }
+            $('#xm_id').val('');
+            for(var i=0;i<arrayxm.length;i++)
+            {
+                $('#xm_id').val($('#xm_id').val()+arrayxm[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            xm_id = ClearSymbol($('#xm_id').val());
+            $('#xm_id').val(xm_id);
             var hetongid=getUrlParam('hetong_id');
             var guojiaid=getUrlParam('guojia_id');
             var ssdwid=getUrlParam('ssdw_id');
@@ -45,10 +93,7 @@
             var endtime=getUrlParam('endtime');
             var rmb=$('#rmb').maskMoney('unmasked')[0];
             var usd=$('#usd').maskMoney('unmasked')[0];
-            if(xmid==null)
-            {
-                xmid=0;
-            }
+
             if(hetongid==null)
             {
                 hetongid=0;
@@ -81,22 +126,31 @@
             {
                 gongqi="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
+            location.href = "?xm_id="+ xm_id+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
-
+        var showxm = new Array();
+        try{
+            showxm=xm_id.split(':');
+        }catch(err){}
         $('.xm').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == xm_id)
-            {
+            if ($.inArray($(this).val(),showxm)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(xm_id==null) {
+        if(showxm.length==0)
+        {
             $('.xm').each(function () {
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
+                //$('#idName').val();
                 if ($(this).val() == '0') {
                     $(this).addClass('btn-success');
                     $(this).removeClass('btn-white');
@@ -107,19 +161,47 @@
 
         //////////////////////////////////////合同类型
         var hetong_id = getUrlParam('hetong_id');
+        if(hetong_id=='')
+        {
+            hetong_id='0:';
+        }
+        var arrayhetong = new Array();
+        try {
+            arrayhetong = hetong_id.split(':');
+        }catch(err){}
 
-        $('.hetong').removeClass('btn-success');
-        $('.hetong').addClass('btn-white');
 
         $('.hetong').click( function() {
-            $('.hetong').removeClass('btn-success');
-            $('.hetong').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#hetong_id').val($(this).val());
+            if($.inArray($(this).val(),arrayhetong)>=0)
+            {
+                arrayhetong.removeByValue($(this).val());
+            }else
+            {
+                arrayhetong.push($(this).val());
+            }
+            arrayhetong = $.unique(arrayhetong);
+            arrayhetong = arrayhetong.sort();
+            if(arrayhetong.length>1)
+            {
+
+                arrayhetong.removeByValue('');
+                arrayhetong.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arrayhetong.length = 0;
+                arrayhetong.push(0);
+            }
+            $('#hetong_id').val('');
+            for(var i=0;i<arrayhetong.length;i++)
+            {
+                $('#hetong_id').val($('#hetong_id').val()+arrayhetong[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            hetong_id = ClearSymbol($('#hetong_id').val());
+            $('#hetong_id').val(hetong_id);
 
             var xmid=getUrlParam('xm_id');
-            var hetongid=$(this).val();
             var guojiaid=getUrlParam('guojia_id');
             var ssdwid=getUrlParam('ssdw_id');
             var gongqi=getUrlParam('gongqi');
@@ -131,10 +213,7 @@
             {
                 xmid=0;
             }
-            if(hetongid==null)
-            {
-                hetongid=0;
-            }
+
             if(guojiaid==null)
             {
                 guojiaid=0;
@@ -163,22 +242,31 @@
             {
                 gongqi="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetong_id+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
-
+        var showhetong = new Array();
+        try{
+            showhetong=hetong_id.split(':');
+        }catch(err){}
         $('.hetong').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == hetong_id)
-            {
+            if ($.inArray($(this).val(),showhetong)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(hetong_id==null) {
+        if(showhetong.length==0)
+        {
             $('.hetong').each(function () {
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
+                //$('#idName').val();
                 if ($(this).val() == '0') {
                     $(this).addClass('btn-success');
                     $(this).removeClass('btn-white');
@@ -190,19 +278,47 @@
 
         //////////////////////////////////////实施单位
         var ssdw_id = getUrlParam('ssdw_id');
+        if(ssdw_id=='')
+        {
+            ssdw_id='0:';
+        }
+        var arrayssdw = new Array();
+        try {
+            arrayssdw = ssdw_id.split(':');
+        }catch(err){}
 
-        $('.ssdw').removeClass('btn-success');
-        $('.ssdw').addClass('btn-white');
 
         $('.ssdw').click( function() {
-            $('.ssdw').removeClass('btn-success');
-            $('.ssdw').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#ssdw_id').val($(this).val());
+            if($.inArray($(this).val(),arrayssdw)>=0)
+            {
+                arrayssdw.removeByValue($(this).val());
+            }else
+            {
+                arrayssdw.push($(this).val());
+            }
+            arrayssdw = $.unique(arrayssdw);
+            arrayssdw = arrayssdw.sort();
+            if(arrayssdw.length>1)
+            {
+
+                arrayssdw.removeByValue('');
+                arrayssdw.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arrayssdw.length = 0;
+                arrayssdw.push(0);
+            }
+            $('#ssdw_id').val('');
+            for(var i=0;i<arrayssdw.length;i++)
+            {
+                $('#ssdw_id').val($('#ssdw_id').val()+arrayssdw[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            ssdw_id = ClearSymbol($('#ssdw_id').val());
+            $('#ssdw_id').val(ssdw_id);
 
             var xmid=getUrlParam('xm_id');
-            var ssdwid=$(this).val();
             var guojiaid=getUrlParam('guojia_id');
             var gongqi=getUrlParam('gongqi');
             var hetongid=getUrlParam('hetong_id');
@@ -222,10 +338,7 @@
             {
                 guojiaid=0;
             }
-            if(ssdwid==null)
-            {
-                ssdwid=0;
-            }
+
             if(fromtime==null)
             {
                 fromtime="";
@@ -246,22 +359,31 @@
             {
                 gongqi="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdw_id+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
-
+        var showssdw = new Array();
+        try{
+            showssdw=ssdw_id.split(':');
+        }catch(err){}
         $('.ssdw').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == ssdw_id)
-            {
+            if ($.inArray($(this).val(),showssdw)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(ssdw_id==null) {
+        if(showssdw.length==0)
+        {
             $('.ssdw').each(function () {
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
+                //$('#idName').val();
                 if ($(this).val() == '0') {
                     $(this).addClass('btn-success');
                     $(this).removeClass('btn-white');
@@ -272,20 +394,48 @@
 
         //////////////////////////////////////国家
         var guojia_id = getUrlParam('guojia_id');
+        if(guojia_id=='')
+        {
+            guojia_id='0:';
+        }
+        var arrayguojia = new Array();
+        try {
+            arrayguojia = guojia_id.split(':');
+        }catch(err){}
 
-        $('.guojia').removeClass('btn-success');
-        $('.guojia').addClass('btn-white');
 
         $('.guojia').click( function() {
-            $('.guojia').removeClass('btn-success');
-            $('.guojia').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#guojia_id').val($(this).val());
+            if($.inArray($(this).val(),arrayguojia)>=0)
+            {
+                arrayguojia.removeByValue($(this).val());
+            }else
+            {
+                arrayguojia.push($(this).val());
+            }
+            arrayguojia = $.unique(arrayguojia);
+            arrayguojia = arrayguojia.sort();
+            if(arrayguojia.length>1)
+            {
+
+                arrayguojia.removeByValue('');
+                arrayguojia.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arrayguojia.length = 0;
+                arrayguojia.push(0);
+            }
+            $('#guojia_id').val('');
+            for(var i=0;i<arrayguojia.length;i++)
+            {
+                $('#guojia_id').val($('#guojia_id').val()+arrayguojia[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            guojia_id = ClearSymbol($('#guojia_id').val());
+            $('#guojia_id').val(guojia_id);
 
             var xmid=getUrlParam('xm_id');
             var hetongid=getUrlParam('hetong_id');
-            var guojiaid=$(this).val();
             var ssdwid=getUrlParam('ssdw_id');
             var gongqi=getUrlParam('gongqi');
             var fromtime=getUrlParam('fromtime');
@@ -300,10 +450,7 @@
             {
                 hetongid=0;
             }
-            if(guojiaid==null)
-            {
-                guojiaid=0;
-            }
+
             if(ssdwid==null)
             {
                 ssdwid="";
@@ -328,22 +475,31 @@
             {
                 gongqi="";
             }
-            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojiaid+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
+            location.href = "?xm_id="+ xmid+"&hetong_id="+hetongid+"&guojia_id="+guojia_id+"&ssdw_id="+ssdwid+"&fromtime="+fromtime+"&endtime="+endtime+"&rmb="+rmb+"&usd="+usd+"&gongqi="+gongqi;
         });
-
+        var showguojia = new Array();
+        try{
+            showguojia=guojia_id.split(':');
+        }catch(err){}
         $('.guojia').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == guojia_id)
-            {
+            if ($.inArray($(this).val(),showguojia)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(guojia_id==null) {
+        if(showguojia.length==0)
+        {
             $('.guojia').each(function () {
+                //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
+                //$('#idName').val();
                 if ($(this).val() == '0') {
                     $(this).addClass('btn-success');
                     $(this).removeClass('btn-white');
@@ -596,12 +752,21 @@
 <div class="ibox-content">
   <% @projecttypes.each do |p| %>
 
-      <% params_xmid = params[:xm_id] %>
-      <% if !params_xmid || params_xmid==""  %>
-          <% params_xmid ='0' %>
+      <% pid = '0' %>
+      <% params_xmid = Array.new %>
+      <% if params[:xm_id] %>
+          <% if params[:xm_id].include?":" %>
+              <% params_xmid = params[:xm_id].split(':') %>
+          <% else %>
+              <% pid =params[:xm_id] %>
+          <% end %>
       <% end %>
 
-      <% if params_xmid == '0' || p.id.to_s == params_xmid %>
+      <% if pid == '' %>
+          <% pid = '0' %>
+      <% end %>
+
+      <% if pid =='0' || pid ==p.id.to_s  ||  params_xmid.include?(p.id.to_s) %>
 
 
       <div class="row">

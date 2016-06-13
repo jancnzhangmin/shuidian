@@ -42,16 +42,52 @@ end
     #   myselect=myselect+" and zhuangye_id ="+params[:zhuanye_id]
     # end
     #
-    if params[:xueli_id].to_i>0
-      myselect=myselect+" and xueli_id ="+params[:xueli_id]
+    if params[:xueli_id] !="" && params[:xueli_id] !=nil
+      if params[:xueli_id].include?":"
+        xuelisplit = params[:xueli_id].split(':')
+        myselect = myselect + " and xueli_id in("
+        xuelisplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:xueli_id] !="0"
+          myselect=myselect+" and xueli_id ="+params[:xueli_id]
+        end
+      end
     end
 
-    if params[:zhicheng_id].to_i>0
-      myselect=myselect+" and zhicheng_id ="+params[:zhicheng_id]
+    if params[:zhicheng_id] !="" && params[:zhicheng_id] !=nil
+      if params[:zhicheng_id].include?":"
+        zhichengsplit = params[:zhicheng_id].split(':')
+        myselect = myselect + " and zhicheng_id in("
+        zhichengsplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:zhicheng_id] !="0"
+          myselect=myselect+" and zhicheng_id ="+params[:zhicheng_id]
+        end
+      end
     end
 
-    if params[:zczzy_id].to_i>0
-      myselect=myselect+" and zcz_id ="+params[:zczzy_id]
+    if params[:zczzy_id] !="" && params[:zczzy_id] !=nil
+      if params[:zczzy_id].include?":"
+        zczzysplit = params[:zczzy_id].split(':')
+        myselect = myselect + " and zcz_id in("
+        zczzysplit.each{|f|
+          myselect = myselect +f + ","
+        }
+        myselect = myselect.chop
+        myselect = myselect + ")"
+      else
+        if params[:zczzy_id] !="0"
+          myselect=myselect+" and zcz_id ="+params[:zczzy_id]
+        end
+      end
     end
 
     if params[:worktime] != nil

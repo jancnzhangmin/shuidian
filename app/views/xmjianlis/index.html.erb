@@ -12,18 +12,69 @@
                     return null; //返回参数值
                 }
 
+        Array.prototype.removeByValue = function(val){
+            for(var i = 0;i<this.length;i++){
+                if(this[i]==val){
+                    this.splice(i,1);
+                    break;
+                }
+            }
+        }
+
+        function ClearSymbol(name){
+            var myclear = name;
+            if(name.substr(0,1)==':')
+            {
+                myclear = name.substr(1,name.length);
+            }
+            if(name.substr(name.length-1,1)==':')
+            {
+                myclear = name.substr(0,name.length-1);
+            }
+            return myclear;
+        }
+
         //////////////////////////////////////国家部分
         var coun_id = getUrlParam('coun_id');
+        if(coun_id=='')
+        {
+            coun_id='0:';
+        }
+        var arraycoun = new Array();
+        try {
+            arraycoun = coun_id.split(':');
+        }catch(err){}
 
-        $('.coun').removeClass('btn-success');
-        $('.coun').addClass('btn-white');
 
         $('.coun').click( function() {
-            $('.coun').removeClass('btn-success');
-            $('.coun').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#coun_id').val($(this).val());
+            if($.inArray($(this).val(),arraycoun)>=0)
+            {
+                arraycoun.removeByValue($(this).val());
+            }else
+            {
+                arraycoun.push($(this).val());
+            }
+            arraycoun = $.unique(arraycoun);
+            arraycoun = arraycoun.sort();
+            if(arraycoun.length>1)
+            {
+
+                arraycoun.removeByValue('');
+                arraycoun.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arraycoun.length = 0;
+                arraycoun.push(0);
+            }
+            $('#coun_id').val('');
+            for(var i=0;i<arraycoun.length;i++)
+            {
+                $('#coun_id').val($('#coun_id').val()+arraycoun[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            coun_id = ClearSymbol($('#coun_id').val());
+            $('#coun_id').val(coun_id);
 
             var languageid=getUrlParam('language_id');
             var xm=$('#xm').val();
@@ -39,19 +90,26 @@
 
             location.href = "?coun_id="+$('#coun_id').val() + "&language_id=" + languageid + "&xm=" + xm;
         });
-
+        var showcoun = new Array();
+        try{
+            showcoun=coun_id.split(':');
+        }catch(err){}
         $('.coun').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == coun_id)
-            {
+            if ($.inArray($(this).val(),showcoun)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(coun_id==null) {
+        if(showcoun.length==0)
+        {
             $('.coun').each(function () {
                 //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
                 //$('#idName').val();
@@ -65,16 +123,45 @@
 
         //////////////////////////////////////语言部分
         var language_id = getUrlParam('language_id');
+        if(language_id=='')
+        {
+            language_id='0:';
+        }
+        var arraylanguage = new Array();
+        try {
+            arraylanguage = language_id.split(':');
+        }catch(err){}
 
-        $('.language').removeClass('btn-success');
-        $('.language').addClass('btn-white');
 
         $('.language').click( function() {
-            $('.language').removeClass('btn-success');
-            $('.language').addClass('btn-white');
-            $(this).addClass('btn-success');
-            $(this).removeClass('btn-white');
-            $('#language_id').val($(this).val());
+            if($.inArray($(this).val(),arraylanguage)>=0)
+            {
+                arraylanguage.removeByValue($(this).val());
+            }else
+            {
+                arraylanguage.push($(this).val());
+            }
+            arraylanguage = $.unique(arraylanguage);
+            arraylanguage = arraylanguage.sort();
+            if(arraylanguage.length>1)
+            {
+
+                arraylanguage.removeByValue('');
+                arraylanguage.removeByValue('0');
+            }
+            if($(this).val()=='0')
+            {
+                arraylanguage.length = 0;
+                arraylanguage.push(0);
+            }
+            $('#language_id').val('');
+            for(var i=0;i<arraylanguage.length;i++)
+            {
+                $('#language_id').val($('#language_id').val()+arraylanguage[i]+':');
+            }
+            //$('#zhuanye_id').val(ClearSymbol($('#zhuanye_id').val()));
+            language_id = ClearSymbol($('#language_id').val());
+            $('#language_id').val(language_id);
 
             var counid=getUrlParam('coun_id');
             var xm=$('#xm').val();
@@ -90,19 +177,27 @@
 
             location.href = "?coun_id="+counid + "&language_id=" + $('#language_id').val() + "&xm=" + xm;
         });
-
+        var showlanguage = new Array();
+        try{
+            showlanguage=language_id.split(':');
+        }catch(err){}
         $('.language').each(function(){
             //var idName= this;
             //$('#idName').val();
-            if ($(this).val() == language_id)
-            {
+
+            if ($.inArray($(this).val(),showlanguage)>=0) {
                 $(this).addClass('btn-success');
                 $(this).removeClass('btn-white');
+            }else
+            {
+                $(this).addClass('btn-white');
+                $(this).removeClass('btn-success');
             }
 
         });
 
-        if(language_id==null) {
+        if(showlanguage.length==0)
+        {
             $('.language').each(function () {
                 //var idName= this;ar zhuanye_id = getUrlParam('zhuanye_id');
                 //$('#idName').val();
